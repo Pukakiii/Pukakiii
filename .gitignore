@@ -38,3 +38,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local profile data for agent — never commit
+*_data.md
+*_pp.jpeg
+*_pp.jpg
+
+# Shipping machinery (local only)
+.ship/
