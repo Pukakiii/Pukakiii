@@ -1,36 +1,56 @@
 ---
-description: Pukakiii portfolio — auto-ship from chanhdai.com (BLOCKED on feature Q&A)
+description: Pukakiii portfolio — auto-ship from chanhdai.com with full registry platform
 globs: Pukakiii/**
 alwaysApply: false
 ---
 
 # Pukakiii Portfolio
 
-## Track: auto-ship (setup blocked)
+## Track: auto-ship
 
 - **Remote:** https://github.com/Pukakiii/Pukakiii.git
 - **Reference:** [ncdai/chanhdai.com](https://github.com/ncdai/chanhdai.com)
 - **Profile:** Read `PK_data.md` first. Never commit it.
 - **Schedule offset:** +0 min (Europe/London)
 
-## Blocking prerequisite
+## Feature selections (confirmed)
 
-**Do not clone or adapt** until user completes chanhdai.com feature selection Q&A:
+### Scope — KEEP
 
-1. Scope: single-page vs blog vs registry platform
-2. Homepage sections to include/exclude
-3. UX: command palette, keyboard shortcuts, theme toggle, mobile nav, sound/haptic
-4. Integrations: PostHog, OpenPanel, vCard, LLM routes, RSS, dynamic OG, game easter egg
-5. Visual effects: flip-typing, avatar lights, marquee, isometric brand, pronunciation audio
+- Full registry/docs platform (`/components`, `/blocks`, MDX docs)
 
-## Default assumption (if user defers)
+### Homepage sections — KEEP
 
-Single-page portfolio + theme toggle + core sections (Profile, Overview, About, Social, Experience, Projects, Education) — no registry, analytics, game, or LLM routes.
+ProfileHeader, Overview, SocialLinks, Experience, Education, Projects, TechStack, Certifications, Insights
 
-## Styling tweak (planned)
+### Homepage sections — REMOVE
 
-- Theme token / accent color shift in Tailwind 4 CSS variables
+Hello, Testimonials, Awards, GitHubContributions, Bookmarks, Sponsors
+
+### UX — KEEP
+
+Theme toggle, keyboard shortcuts, command palette (Cmd+K), mobile bottom nav, scroll-to-top
+
+### UX — REMOVE
+
+Sound/haptic, route progress bar (unless trivial)
+
+### Integrations — KEEP
+
+vCard, blog + `/blog` routes, OpenPanel (+ Insights chart section)
+
+### Integrations — REMOVE
+
+PostHog, dynamic OG routes (unless required for build), LLM routes (`/llms.txt`, `*.md` exports), RSS, game easter egg
+
+### Visual effects — KEEP
+
+Flip-typing taglines, avatar lights toggle, isometric brand mark, verified badge, pronunciation audio; marquee disabled when no testimonials data
+
+### Styling tweak (applied)
+
+- Accent hue shift in Tailwind 4 CSS variables (warm amber/coral accent vs reference teal)
 
 ## Placeholders
 
-Until `PK_data.md` and `PK_pp.jpeg` are provided, use bracketed copy and generic avatar placeholder.
+Until `PK_data.md` and `PK_pp.jpeg` are provided, use bracketed copy (`[… — to be updated]`) and generic avatar/OG placeholders only.
