@@ -1,0 +1,35 @@
+---
+description: Pukakiii portfolio — portfolio project
+globs: Pukakiii/**
+alwaysApply: false
+---
+
+# Pukakiii Portfolio
+
+## Track: auto-ship (setup blocked)
+
+- **Remote:** https://github.com/Pukakiii/Pukakiii.git
+- **Profile:** Read `PK_data.md` first. Never commit it.
+- **Schedule offset:** +0 min (Europe/London)
+
+## Blocking prerequisite
+
+**Do not clone or adapt** until user completes feature selection Q&A:
+
+1. Scope: single-page vs blog vs registry platform
+2. Homepage sections to include/exclude
+3. UX: command palette, keyboard shortcuts, theme toggle, mobile nav, sound/haptic
+4. Integrations: PostHog, OpenPanel, vCard, LLM routes, RSS, dynamic OG, game easter egg
+5. Visual effects: flip-typing, avatar lights, marquee, isometric brand, pronunciation audio
+
+## Default assumption (if user defers)
+
+Single-page portfolio + theme toggle + core sections (Profile, Overview, About, Social, Experience, Projects, Education) — no registry, analytics, game, or LLM routes.
+
+## Styling tweak (planned)
+
+- Theme token / accent color shift in Tailwind 4 CSS variables
+
+## Placeholders
+
+Until `PK_data.md` and `PK_pp.jpeg` are provided, use bracketed copy and generic avatar placeholder.
