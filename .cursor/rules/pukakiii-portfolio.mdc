@@ -50,6 +50,8 @@ Flip-typing taglines, avatar lights toggle, isometric brand mark, verified badge
 
 - Accent hue shift in Tailwind 4 CSS variables (warm amber/coral accent vs reference teal)
 
-## Placeholders
+## Profile data
 
-Until `PK_data.md` and `PK_pp.jpeg` are provided, use bracketed copy (`[… — to be updated]`) and generic avatar/OG placeholders only.
+- **Source:** `PK_data.md` (GitHub repos + public profile). Never commit it.
+- **Staging:** Igor/Pukakiii identity, GitHub + LinkedIn links, five public projects (Job-Agent, httpcrawler, miniRED, spotify-playlist, react-appointment-manager), tech stack from repo languages.
+- **Still placeholder:** Avatar, employer/experience dates, education, pronouns, vCard email/phone.
