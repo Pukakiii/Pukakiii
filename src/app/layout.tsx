@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider>
           <SiteHeader />
-          <main className="mx-auto max-w-4xl px-4 pb-16 pt-10 sm:px-6">{children}</main>
+          <main className="mx-auto max-w-5xl px-4 pb-16 pt-10 sm:px-6">{children}</main>
         </ThemeProvider>
       </body>
     </html>

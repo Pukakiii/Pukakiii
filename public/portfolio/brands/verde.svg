@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="96" fill="#1B4332"/>
+  <path d="M100 44c-8 28-36 40-36 68 0 20 16 36 36 36s36-16 36-36c0-28-28-40-36-68z" fill="#40916C"/>
+  <path d="M100 88c-4 12-14 18-14 30 0 10 6 18 14 18s14-8 14-18c0-12-10-18-14-30z" fill="#D8F3DC"/>
+  <text x="100" y="178" text-anchor="middle" fill="#D8F3DC" font-family="Georgia,serif" font-size="14" font-weight="600">VERDE</text>
+</svg>

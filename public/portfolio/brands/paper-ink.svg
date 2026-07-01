@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" fill="#FAFAF9"/>
+  <rect x="32" y="32" width="136" height="136" stroke="#292524" stroke-width="1.5" fill="none"/>
+  <text x="100" y="108" text-anchor="middle" fill="#292524" font-family="Georgia,serif" font-size="48" font-style="italic">P&amp;</text>
+  <line x1="48" y1="140" x2="152" y2="140" stroke="#78716C" stroke-width="1"/>
+  <text x="100" y="158" text-anchor="middle" fill="#78716C" font-family="Georgia,serif" font-size="10" letter-spacing="3">PAPER &amp; INK</text>
+</svg>

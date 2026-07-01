@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="16" fill="#365314"/>
+  <ellipse cx="100" cy="130" rx="60" ry="20" fill="#854D0E" opacity="0.5"/>
+  <path d="M100 40 C80 70 60 90 70 120 C75 135 88 140 100 140 C112 140 125 135 130 120 C140 90 120 70 100 40Z" fill="#CA8A04"/>
+  <path d="M100 50 C90 72 78 88 84 108 C87 118 94 122 100 122 C106 122 113 118 116 108 C122 88 110 72 100 50Z" fill="#FEF9C3"/>
+  <text x="100" y="178" text-anchor="middle" fill="#FEF9C3" font-family="Georgia,serif" font-size="12" font-weight="600">HARVEST</text>
+</svg>

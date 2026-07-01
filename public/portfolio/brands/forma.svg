@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" fill="#F3F4F6"/>
+  <rect x="48" y="48" width="104" height="104" stroke="#374151" stroke-width="2" fill="none"/>
+  <line x1="48" y1="100" x2="152" y2="100" stroke="#374151" stroke-width="1"/>
+  <line x1="100" y1="48" x2="100" y2="152" stroke="#374151" stroke-width="1"/>
+  <text x="100" y="178" text-anchor="middle" fill="#374151" font-family="Helvetica,Arial,sans-serif" font-size="12" letter-spacing="5">FORMA</text>
+</svg>
