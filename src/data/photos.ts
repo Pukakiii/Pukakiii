@@ -1,17 +1,19 @@
 /** All portfolio photos are bundled locally — several Unsplash IDs return 404. */
+const v = "?v=2"
+
 export const PHOTOS = {
-  studio: "/portfolio/photos/studio.jpg",
-  poster: "/portfolio/photos/poster.jpg",
-  packaging: "/portfolio/photos/packaging.jpg",
-  signage: "/portfolio/photos/signage.jpg",
-  commercial: "/portfolio/photos/commercial.jpg",
-  video: "/portfolio/photos/video.jpg",
-  social: "/portfolio/photos/social.jpg",
-  web: "/portfolio/photos/web.jpg",
-  ui: "/portfolio/photos/ui.jpg",
-  lens1: "/portfolio/photos/lens-1.jpg",
-  lens2: "/portfolio/photos/lens-2.jpg",
-  lens3: "/portfolio/photos/lens-3.jpg",
+  studio: `/portfolio/photos/studio.jpg${v}`,
+  poster: `/portfolio/photos/poster.jpg${v}`,
+  packaging: `/portfolio/photos/packaging.jpg${v}`,
+  signage: `/portfolio/photos/signage.jpg${v}`,
+  commercial: `/portfolio/photos/commercial.jpg${v}`,
+  video: `/portfolio/photos/video.jpg${v}`,
+  social: `/portfolio/photos/social.jpg${v}`,
+  web: `/portfolio/photos/web.jpg${v}`,
+  ui: `/portfolio/photos/ui.jpg${v}`,
+  lens1: `/portfolio/photos/lens-1.jpg${v}`,
+  lens2: `/portfolio/photos/lens-2.jpg${v}`,
+  lens3: `/portfolio/photos/lens-3.jpg${v}`,
 } as const
 
 export const PHOTO_GALLERY = [
