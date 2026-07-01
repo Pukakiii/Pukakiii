@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "icons:generate": "node scripts/generate-favicon.mjs",
+    "prebuild": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
     "next": "^15.5.7",
@@ -23,6 +25,7 @@
     "@types/react-dom": "^19.2.1",
     "eslint": "^9.22.0",
     "eslint-config-next": "^15.5.7",
+    "sharp": "^0.34.3",
     "tailwindcss": "^4.3.1",
     "typescript": "^5.8.3"
   },
