@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { CoverImg, LogoImg } from "@/components/media"
 import { BRAND_IDENTITIES } from "@/data/brands"
+import { PHOTOS } from "@/data/photos"
 import { PROFILE } from "@/data/profile"
 
 export function PortfolioHero() {
@@ -29,7 +30,7 @@ export function PortfolioHero() {
         <article className="bento-card group relative lg:col-span-7 lg:row-span-2">
           <div className="absolute inset-0">
             <CoverImg
-              src="https://images.unsplash.com/photo-1626785774573-4b799314346d?w=1400&q=80"
+              src={PHOTOS.studio}
               alt="Creative studio workspace"
               className="image-zoom h-full w-full object-cover"
               priority

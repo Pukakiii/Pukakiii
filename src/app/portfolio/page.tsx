@@ -7,6 +7,7 @@ import { PortfolioHero } from "@/components/portfolio/portfolio-hero"
 import { PosterMockup } from "@/components/portfolio/poster-mockup"
 import { StationeryMockup } from "@/components/portfolio/stationery-mockup"
 import { BRAND_IDENTITIES, POSTER_DESIGNS } from "@/data/brands"
+import { PHOTO_GALLERY } from "@/data/photos"
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS } from "@/data/portfolio"
 import { PROFILE } from "@/data/profile"
 
@@ -15,14 +16,7 @@ export const metadata = {
   description: "Brand identity, logo design, print, photo, video, and digital creative work.",
 }
 
-const PHOTO_SAMPLES = [
-  "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80",
-  "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80",
-  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80",
-  "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-  "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80",
-]
+const PHOTO_SAMPLES = PHOTO_GALLERY
 
 export default function PortfolioPage() {
   const featuredBrands = BRAND_IDENTITIES.slice(0, 2)
