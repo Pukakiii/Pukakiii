@@ -11,6 +11,7 @@ alwaysApply: false
 - **Remote:** https://github.com/Pukakiii/Pukakiii.git
 - **Reference:** [ncdai/chanhdai.com](https://github.com/ncdai/chanhdai.com)
 - **Profile:** Read `PK_data.md` first. Never commit it.
+- **Resume source:** `resume collection/` is a symlink to `~/Documents/resume collection` (see `resume.config.json`). Never commit it. Run `npm run resume:link` after clone if the link is missing.
 - **Schedule offset:** +0 min (Europe/London)
 
 ## Feature selections (confirmed)
@@ -54,5 +55,7 @@ Flip-typing taglines, avatar lights toggle, isometric brand mark, verified badge
 ## Profile data
 
 - **Source:** `PK_data.md` (GitHub repos + public profile). Never commit it.
+- **Structured facts:** `resume collection/data/` (symlink to `~/Documents/resume collection/data/`). Read before updating experience, education, skills, or copy in staging.
+- **CV PDFs:** `resume collection/Igor_Pukalski_CV.pdf` and other PDFs in that folder — source only; copy to `public/` when a download link is needed.
 - **Staging:** Igor/Pukakiii identity, GitHub + LinkedIn links, five public projects (Job-Agent, httpcrawler, miniRED, spotify-playlist, react-appointment-manager), tech stack from repo languages.
 - **Still placeholder:** Avatar, employer/experience dates, education, pronouns, vCard email/phone.

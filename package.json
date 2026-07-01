@@ -17,7 +17,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --cache --cache-location .eslintcache",
-    "check-types": "tsc --noEmit --pretty"
+    "check-types": "tsc --noEmit --pretty",
+    "resume:link": "node scripts/ensure-resume-link.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
