@@ -1,65 +1,46 @@
-import dynamic from "next/dynamic"
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import { MAIN_NAV } from "@/config/site"
-import { Separator } from "@/components/ui/separator"
-import { BrandMark } from "@/components/brand-mark"
-import { NavDesktop } from "@/components/nav-desktop"
-import { NavItemGitHub } from "@/components/nav-item-github"
 import { ThemeToggle } from "@/components/theme-toggle"
-import blocks from "@/registry/__blocks__.json"
-import { getAllDocs } from "@/features/doc/data/documents"
-import type { DocPreview } from "@/features/doc/types/document"
+import { PROFILE } from "@/data/profile"
 
-const BrandContextMenu = dynamic(
-  () => import("@/components/brand-context-menu")
-)
-
-const CommandMenu = dynamic(() => import("@/components/command-menu"))
+const NAV = [
+  { href: "/", label: "Resume" },
+  { href: "/portfolio", label: "Portfolio" },
+] as const
 
 export function SiteHeader() {
-  const docs = getAllDocs()
-
-  // Minimize data serialized to client component - only send necessary fields
-  const docPreviews: DocPreview[] = docs.map((doc) => ({
-    slug: doc.slug,
-    title: doc.metadata.title,
-    category: doc.metadata.category,
-  }))
+  const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2 pt-(--header-pt) [--header-h:calc(var(--header-height)-var(--header-pt))] [--header-pt:--spacing(2)]">
-      <div className="screen-line-top screen-line-bottom mx-auto flex h-(--header-h) items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
-        <BrandContextMenu>
-          <Link href="/" aria-label="Home">
-            <BrandMark className="h-8 shrink-0" />
-          </Link>
-        </BrandContextMenu>
-
-        <div className="flex-1" />
-
-        <NavDesktop items={MAIN_NAV} />
-
-        <div className="flex items-center max-sm:*:data-[slot=command-menu-trigger]:hidden">
-          <Separator
-            orientation="vertical"
-            className="mr-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-          />
-          <CommandMenu docs={docPreviews} blocks={blocks} enabledHotkeys />
-          <Separator
-            orientation="vertical"
-            className="mx-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-          />
-          <NavItemGitHub />
-          <Separator
-            orientation="vertical"
-            className="mx-2 data-vertical:h-5 data-vertical:self-center"
-          />
+    <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+        <Link href="/" className="text-sm font-medium tracking-tight text-foreground">
+          {PROFILE.name}
+        </Link>
+        <div className="flex items-center gap-3">
+          <nav className="flex items-center gap-1">
+            {NAV.map(({ href, label }) => {
+              const active = pathname === href
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                    active
+                      ? "bg-accent/10 font-medium text-accent"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {label}
+                </Link>
+              )
+            })}
+          </nav>
           <ThemeToggle />
         </div>
-
-        {/* <div className="absolute top-[-3.5px] left-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
-        {/* <div className="absolute top-[-3.5px] right-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
       </div>
     </header>
   )
