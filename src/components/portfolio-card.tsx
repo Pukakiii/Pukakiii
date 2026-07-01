@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 
+import { CoverImg, LogoImg } from "@/components/media"
 import type { PortfolioItem } from "@/data/portfolio"
 
 export function PortfolioCard({ item, featured = false }: { item: PortfolioItem; featured?: boolean }) {
@@ -8,12 +8,10 @@ export function PortfolioCard({ item, featured = false }: { item: PortfolioItem;
     <article className={`bento-card group ${featured ? "lg:col-span-2" : ""}`}>
       {item.image ? (
         <div className={`relative overflow-hidden ${featured ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
-          <Image
+          <CoverImg
             src={item.image}
             alt={item.imageAlt ?? item.title}
-            fill
-            className="image-zoom object-cover"
-            sizes={featured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+            className="image-zoom h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
           <div className="absolute bottom-0 left-0 p-6">
@@ -29,15 +27,8 @@ export function PortfolioCard({ item, featured = false }: { item: PortfolioItem;
               key={logo.name}
               className="flex flex-col items-center gap-2 rounded-xl border border-border/60 bg-background/80 p-3 transition-transform hover:-translate-y-1"
             >
-              <div className="relative h-8 w-8 sm:h-9 sm:w-9">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  fill
-                  className="object-contain"
-                  sizes="36px"
-                  unoptimized={logo.src.startsWith("https://")}
-                />
+              <div className="h-8 w-8 sm:h-9 sm:w-9">
+                <LogoImg src={logo.src} alt={logo.name} />
               </div>
               <span className="text-center text-[9px] leading-tight text-muted-foreground">{logo.name}</span>
             </div>

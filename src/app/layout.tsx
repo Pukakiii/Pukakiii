@@ -26,6 +26,10 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: `${PROFILE.name} — ${PROFILE.title}`,
   description: PROFILE.about.join(" "),
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

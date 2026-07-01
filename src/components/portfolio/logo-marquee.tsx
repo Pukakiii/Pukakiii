@@ -1,5 +1,4 @@
-import Image from "next/image"
-
+import { LogoImg } from "@/components/media"
 import type { BrandIdentity } from "@/data/brands"
 
 export function LogoMarquee({ brands }: { brands: BrandIdentity[] }) {
@@ -14,8 +13,8 @@ export function LogoMarquee({ brands }: { brands: BrandIdentity[] }) {
             className="flex w-36 shrink-0 flex-col items-center gap-3 rounded-xl border border-border/60 p-4"
             style={{ backgroundColor: brand.colors[0] }}
           >
-            <div className="relative h-12 w-12">
-              <Image src={brand.logo} alt={brand.name} fill className="object-contain" sizes="48px" />
+            <div className="h-12 w-12">
+              <LogoImg src={brand.logo} alt={brand.name} />
             </div>
             <span
               className="text-center text-[10px] font-semibold uppercase tracking-wider"

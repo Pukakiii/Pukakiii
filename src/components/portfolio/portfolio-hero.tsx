@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 
+import { CoverImg, LogoImg } from "@/components/media"
 import { BRAND_IDENTITIES } from "@/data/brands"
 import { PROFILE } from "@/data/profile"
 
@@ -28,12 +28,10 @@ export function PortfolioHero() {
       <div className="grid gap-4 lg:grid-cols-12 lg:grid-rows-[220px_220px]">
         <article className="bento-card group relative lg:col-span-7 lg:row-span-2">
           <div className="absolute inset-0">
-            <Image
+            <CoverImg
               src="https://images.unsplash.com/photo-1626785774573-4b799314346d?w=1400&q=80"
               alt="Creative studio workspace"
-              fill
-              className="image-zoom object-cover"
-              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="image-zoom h-full w-full object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -61,8 +59,8 @@ export function PortfolioHero() {
         >
           <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: heroBrand.colors[2] }} />
           <div className="relative flex h-full min-h-[220px] flex-col items-center justify-center gap-4 p-6">
-            <div className="float-slow relative h-24 w-24">
-              <Image src={heroBrand.logo} alt={heroBrand.name} fill className="object-contain" sizes="96px" />
+            <div className="float-slow h-24 w-24">
+              <LogoImg src={heroBrand.logo} alt={heroBrand.name} />
             </div>
             <div className="text-center">
               <p className="font-display text-xl font-bold" style={{ color: heroBrand.colors[3] }}>
@@ -85,8 +83,8 @@ export function PortfolioHero() {
               <p className="font-display text-2xl font-bold text-white">{sideBrand.name}</p>
               <p className="mt-1 text-sm text-white/75">{sideBrand.industry}</p>
             </div>
-            <div className="relative h-20 w-20 shrink-0">
-              <Image src={sideBrand.logo} alt={sideBrand.name} fill className="object-contain" sizes="80px" />
+            <div className="h-20 w-20 shrink-0">
+              <LogoImg src={sideBrand.logo} alt={sideBrand.name} />
             </div>
           </div>
         </article>

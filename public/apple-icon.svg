@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <defs>
+    <linearGradient id="ip-bg-lg" x1="20" y1="16" x2="160" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E85D04"/>
+      <stop offset="1" stop-color="#FB923C"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="42" fill="url(#ip-bg-lg)"/>
+  <rect x="8" y="8" width="164" height="164" rx="36" stroke="rgba(255,255,255,0.22)" stroke-width="3"/>
+  <text x="90" y="112" text-anchor="middle" fill="#FFF7ED" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" letter-spacing="-2">IP</text>
+</svg>

@@ -1,5 +1,4 @@
-import Image from "next/image"
-
+import { CoverImg } from "@/components/media"
 import { ContactBar } from "@/components/contact-bar"
 import { PortfolioCard } from "@/components/portfolio-card"
 import { BrandBoard } from "@/components/portfolio/brand-board"
@@ -96,12 +95,10 @@ export default function PortfolioPage() {
                 i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-auto md:min-h-[320px]" : "aspect-square"
               }`}
             >
-              <Image
+              <CoverImg
                 src={src}
                 alt={`Photo sample ${i + 1}`}
-                fill
-                className="image-zoom object-cover"
-                sizes="(max-width: 768px) 50vw, 16vw"
+                className="image-zoom h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             </div>

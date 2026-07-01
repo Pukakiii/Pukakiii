@@ -1,5 +1,4 @@
-import Image from "next/image"
-
+import { LogoImg } from "@/components/media"
 import type { BrandIdentity } from "@/data/brands"
 
 export function BrandBoard({ brand, large = false }: { brand: BrandIdentity; large?: boolean }) {
@@ -17,11 +16,15 @@ export function BrandBoard({ brand, large = false }: { brand: BrandIdentity; lar
         />
         <div className="relative flex h-full flex-col items-center justify-center gap-4 p-6">
           <div
-            className={`relative transition-transform duration-500 group-hover:scale-110 ${
+            className={`transition-transform duration-500 group-hover:scale-110 ${
               large ? "h-32 w-32 sm:h-40 sm:w-40" : "h-20 w-20 sm:h-24 sm:w-24"
             }`}
           >
-            <Image src={brand.logo} alt={`${brand.name} logo`} fill className="object-contain drop-shadow-lg" sizes="160px" />
+            <LogoImg
+              src={brand.logo}
+              alt={`${brand.name} logo`}
+              className="h-full w-full object-contain drop-shadow-lg"
+            />
           </div>
           <div className="text-center">
             <p
