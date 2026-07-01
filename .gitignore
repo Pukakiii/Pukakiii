@@ -43,3 +43,11 @@ next-env.d.ts
 
 #
 .
+
+# local profile + resume (never commit)
+PK_data.md
+PK_pp.jpeg
+resume collection
+resume.config.json
+.ship/
+PROJECT_SUMMARY.md
