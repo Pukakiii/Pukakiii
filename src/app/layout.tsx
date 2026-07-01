@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Syne } from "next/font/google"
 
 import { SiteHeader } from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -17,6 +17,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+})
+
 export const metadata: Metadata = {
   title: `${PROFILE.name} — ${PROFILE.title}`,
   description: PROFILE.about.join(" "),
@@ -25,10 +31,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable}`}>
         <ThemeProvider>
           <SiteHeader />
-          <main className="mx-auto max-w-5xl px-4 pb-16 pt-10 sm:px-6">{children}</main>
+          <main className="mx-auto max-w-6xl px-4 pb-20 pt-8 sm:px-6">{children}</main>
         </ThemeProvider>
       </body>
     </html>

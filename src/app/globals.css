@@ -5,27 +5,41 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-border: var(--border);
+  --color-card: var(--card);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --muted-foreground: #52525b;
-  --accent: #c2410c;
-  --border: #e4e4e7;
+  --background: #f5f2ed;
+  --foreground: #14120b;
+  --muted: #ebe6de;
+  --muted-foreground: #5c564c;
+  --accent: #e85d04;
+  --accent-soft: #fff0e6;
+  --border: #d9d2c7;
+  --card: rgba(255, 255, 255, 0.72);
+  --glow-1: rgba(232, 93, 4, 0.18);
+  --glow-2: rgba(99, 102, 241, 0.12);
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted-foreground: #a1a1aa;
+  --background: #0a0908;
+  --foreground: #f5f0e8;
+  --muted: #1a1816;
+  --muted-foreground: #a8a096;
   --accent: #fb923c;
-  --border: #27272a;
+  --accent-soft: #2a1a0f;
+  --border: #2a2722;
+  --card: rgba(20, 18, 15, 0.78);
+  --glow-1: rgba(251, 146, 60, 0.15);
+  --glow-2: rgba(129, 140, 248, 0.1);
 }
 
 @layer base {
@@ -41,7 +55,136 @@
     @apply bg-background font-sans text-foreground antialiased;
   }
 
+  body::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
   .link-accent {
     @apply text-foreground underline decoration-accent/50 underline-offset-4 transition-colors hover:text-accent;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .page-glow {
+    position: relative;
+  }
+
+  .page-glow::before,
+  .page-glow::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    z-index: -1;
+  }
+
+  .page-glow::before {
+    top: -8rem;
+    right: -4rem;
+    width: 24rem;
+    height: 24rem;
+    background: var(--glow-1);
+  }
+
+  .page-glow::after {
+    top: 20rem;
+    left: -6rem;
+    width: 20rem;
+    height: 20rem;
+    background: var(--glow-2);
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-border/80 backdrop-blur-md;
+    background: var(--card);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 20px 50px -24px rgba(0, 0, 0, 0.25);
+  }
+
+  .bento-card {
+    @apply overflow-hidden rounded-2xl border border-border/80 backdrop-blur-md transition-all duration-500;
+    background: var(--card);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 20px 50px -24px rgba(0, 0, 0, 0.25);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 28px 60px -28px rgba(0, 0, 0, 0.35);
+  }
+
+  .section-label {
+    @apply font-display text-[11px] font-semibold uppercase tracking-[0.35em] text-accent;
+  }
+
+  .portfolio-title {
+    @apply font-display text-4xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl;
+  }
+
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .image-zoom {
+    transform: scale(1.06);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-up {
+    animation: fade-up 0.7s ease-out both;
   }
 }
