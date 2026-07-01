@@ -268,3 +268,7 @@ This project is proudly supported by:
 <p>
   <picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/chart/github/stars/pukakiii/placeholder.local.svg?font=geist&amp;theme=zinc" /><img alt="chart" src="https://shieldcn.dev/chart/github/stars/pukakiii/placeholder.local.svg?mode=light&amp;font=geist&amp;theme=zinc" /></picture>
 </p>
+
+## Credits
+
+This site is adapted from [chanhdai.com](https://github.com/ncdai/chanhdai.com) by [Chánh Đại](https://github.com/ncdai), used under the MIT license (see [LICENSE](LICENSE)). Customized with my own content, feature selection, and styling.
