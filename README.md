@@ -1,270 +1,53 @@
-# [placeholder.local](https://placeholder.local)
+# Igor Pukalski — Portfolio
 
-<p>
- <a href="https://github.com/Pukakiii/placeholder.local"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/pukakiii/placeholder.local/license.svg?variant=outline&amp;font=geist" /><img alt="license" src="https://shieldcn.dev/github/pukakiii/placeholder.local/license.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
- <a href="https://github.com/Pukakiii/placeholder.local"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/pukakiii/placeholder.local.svg?base=8541&amp;variant=outline&amp;font=geist" /><img alt="repo views" src="https://shieldcn.dev/views/repo/pukakiii/placeholder.local.svg?base=43218&amp;variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
-</p>
+Personal portfolio of Igor Pukalski (Pukakiii) — fullstack developer based in Warsaw, Poland.
 
-A pixel-perfect dev portfolio and shadcn registry showcasing my work as a Design Engineer.
+## Stack
 
-→ Check out the live site: [placeholder.local](https://placeholder.local)
-
-[![screenshot-dark](/placeholder-assets/images/screenshot-desktop-dark.webp?t=1778602757#gh-dark-mode-only)](https://placeholder.local#gh-dark-mode-only)
-[![screenshot-light](/placeholder-assets/images/screenshot-desktop-light.webp?t=1778602757#gh-light-mode-only)](https://placeholder.local#gh-light-mode-only)
-
-## Overview
-
-### Stack
-
-- Next.js 16
+- Next.js 16 (App Router, Turbopack)
+- React 19
 - Tailwind CSS v4
-- shadcn/ui
+- TypeScript 5.8
+- shadcn/ui + Radix + Base UI primitives
+- MDX blog with RSS feed
+- OpenPanel analytics
 
-### Featured
+## Pages
 
-- Clean & modern design
-- Light/Dark themes
-- vCard integration
-- SEO optimized ([JSON-LD schema](https://json-ld.org), sitemap, robots)
-- AI-ready with [/llms.txt](https://llmstxt.org)
-- Spam-protected email
-- Installable as PWA
-- Analytics with [PostHog](https://posthog.com) and [OpenPanel](https://openpanel.dev)
-
-### Content
-
-Centralized document system powered by MDX:
-
-- Unified content layer for blog posts and component docs
-- Category-based content organization
-- Raw `.mdx` endpoints for AI readability
-- Syntax highlighting with code blocks
-- Dynamic OG images for rich link previews
-- RSS feed for content distribution
-
-### Registry
-
-Easily build and distribute reusable components, hooks, and pages using a custom registry powered by the [shadcn CLI](https://ui.shadcn.com/docs/cli).
-
-Each entry is well-documented and includes:
-
-- Live preview & code snippets
-- Beautiful, readable code blocks
-- One-click command blocks (pnpm, npm, yarn, bun)
+| Route | Content |
+|-------|---------|
+| `/` | Profile, overview, explore teasers, stack, blog, insights |
+| `/about` | Bio and background |
+| `/experience` | Work history |
+| `/projects` | Open-source and personal projects |
+| `/skills` | Tech stack and certifications |
+| `/education` | Studies |
+| `/blog` | MDX posts (+ `/rss.xml`) |
+| `/analytics` | Site insights and GitHub contribution graph |
+| `/contact` | Email, phone, socials, vCard and CV downloads |
 
 ## Development
 
-Please refer to the [Development Guide](./DEVELOPMENT.md) for more details.
+```bash
+pnpm install
+pnpm dev
+```
 
-## License
+Copy `.env.example` to `.env.local` and fill in what you need — everything degrades gracefully when unset.
 
-Licensed under the [MIT license](./LICENSE).
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_APP_URL` | Canonical site URL |
+| `GITHUB_API_TOKEN` | GitHub stars in the header |
+| `GITHUB_CONTRIBUTIONS_API_URL` | Contribution graph on `/analytics` |
+| `NEXT_PUBLIC_OPENPANEL_CLIENT_ID` + `OPENPANEL_*` | Analytics + insights chart |
 
-You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
+## Scripts
 
-## Contributors
-
-<p>
- <a href="https://github.com/Pukakiii/placeholder.local/graphs/contributors"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/contributors/pukakiii/placeholder.local.svg?title=false&amp;size=48&amp;align=left&amp;mode=dark&amp;font=geist&amp;watermark=true" /><img alt="contributors" src="https://shieldcn.dev/contributors/pukakiii/placeholder.local.svg?title=false&amp;size=48&amp;align=left&amp;mode=light&amp;font=geist&amp;watermark=true" /></picture></a>
-</p>
-
-## Sponsors
-
-This project is proudly supported by:
-
-<table>
- <tbody>
- <tr>
- <td colspan="3"><strong>Open Source Program</strong></td>
- </tr>
- <tr>
- <td>
- <a href="https://openpanel.dev/open-source?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/openpanel-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/openpanel.svg"
- alt="OpenPanel"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://posthog.com/startups?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/posthog-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/posthog.svg"
- alt="PostHog"
- />
- </picture>
- </a>
- </td>
- <td></td>
- </tr>
- <tr>
- <td colspan="3"><strong>Gold Sponsors</strong></td>
- </tr>
- <tr>
- <td>
- <a href="https://shadcnstudio.com?utm_source=placeholder.local&utm_medium=banner&utm_campaign=github">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/shadcnstudio-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/shadcnstudio.svg"
- alt="shadcnstudio.com"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://shadcnspace.com?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/shadcnspace-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/shadcnspace.svg"
- alt="Shadcn Space"
- />
- </picture>
- </a>
- </td>
- <td></td>
- </tr>
- <tr>
- <td colspan="3"><strong>Silver Sponsors</strong></td>
- </tr>
- <tr>
- <td>
- <a href="https://placeholder.local?atp=pukakiii&utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/shadcncraft-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/shadcncraft.svg"
- alt="shadcncraft"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://www.shadcnblocks.com?via=pukakiii&utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/shadcnblocks-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/shadcnblocks.svg"
- alt="Shadcnblocks"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://reactbits.dev?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/reactbits-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/reactbits.svg"
- alt="React Bits"
- />
- </picture>
- </a>
- </td>
- </tr>
- <tr>
- <td colspan="3"><strong>Spark Supporters</strong></td>
- </tr>
- <tr>
- <td>
- <a href="https://uirules.com?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/uirules-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/uirules.svg"
- alt="UI Rules"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://shoogle.dev?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/shoogle-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/shoogle.svg"
- alt="Shoogle"
- />
- </picture>
- </a>
- </td>
- <td>
- <a href="https://www.fonttrio.xyz?utm_source=placeholder.local">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/fonttrio-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/fonttrio.svg"
- alt="Fonttrio"
- />
- </picture>
- </a>
- </td>
- </tr>
- <tr>
- <td>
- <a href="https://github.com/AnukarOP">
- <picture>
- <source
- media="(prefers-color-scheme: dark)"
- srcset="/placeholder-assets/images/sponsors/anukar-dark.svg"
- />
- <img
- src="/placeholder-assets/images/sponsors/anukar.svg"
- alt="Anukar"
- />
- </picture>
- </a>
- </td>
- <td align="center"><a href="https://github.com/raksalim">Raksa Lim</a></td>
- <td></td>
- </tr>
- </tbody>
-</table>
-
-> Found this project useful? [Sponsor me](https://#) to help with support and maintenance.
-
-## Stats
-
-![Stats](https://repobeats.axiom.co/api/embed/583bf08fbdef57c3921d3cfda902d546df3e6ed1.svg "Repobeats analytics image")
-
-## Star history
-
-<p>
- <picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/chart/github/stars/pukakiii/placeholder.local.svg?font=geist&amp;theme=zinc" /><img alt="chart" src="https://shieldcn.dev/chart/github/stars/pukakiii/placeholder.local.svg?mode=light&amp;font=geist&amp;theme=zinc" /></picture>
-</p>
+| Command | Purpose |
+|---------|---------|
+| `pnpm dev` | Dev server |
+| `pnpm build` | Production build |
+| `pnpm lint` | ESLint |
+| `pnpm check-types` | TypeScript |
+| `npm run resume:link` | Re-link local resume data folder (not committed) |

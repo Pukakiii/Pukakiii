@@ -22,6 +22,8 @@ const eslintConfig = defineConfig([
  "out/**",
  "build/**",
  "next-env.d.ts",
+ // Local shipping workspace (not part of the app):
+ ".ship/**",
  ]),
 ])
 
