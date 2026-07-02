@@ -101,23 +101,6 @@ export const components: Registry["items"] = [
  docs: "https://placeholder.local/components/apple-hello-effect",
  },
  {
- name: "wheel-picker",
- type: "registry:component",
- title: "Wheel Picker",
- description:
- "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
- dependencies: ["@react-wheel-picker"],
- files: [
- {
- path: "components/wheel-picker/wheel-picker.tsx",
- type: "registry:component",
- target: "@components/wheel-picker.tsx",
- },
- ],
- categories: ["controls"],
- docs: "https://placeholder.local/components/react-wheel-picker",
- },
- {
  name: "chevrons-up-down-icon",
  type: "registry:component",
  description:

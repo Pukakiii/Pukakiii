@@ -168,23 +168,6 @@ export const Index: Record<string, any> = {
  categories: ["text-effects"],
  meta: undefined,
  },
- "wheel-picker": {
- name: "wheel-picker",
- description: "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
- type: "registry:component",
- files: [{
- path: "src/registry/components/wheel-picker/wheel-picker.tsx",
- type: "registry:component",
- target: "@components/wheel-picker.tsx",
- }],
- component: React.lazy(async () => {
- const mod = await import("@/registry/components/wheel-picker/wheel-picker.tsx")
- const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
- return { default: mod.default || mod[exportName] }
- }),
- categories: ["controls"],
- meta: undefined,
- },
  "chevrons-up-down-icon": {
  name: "chevrons-up-down-icon",
  description: "Animated chevrons icon that morphs between up and down directions.",
@@ -1022,40 +1005,6 @@ export const Index: Record<string, any> = {
  }],
  component: React.lazy(async () => {
  const mod = await import("@/registry/examples/theme-switcher-demo.tsx")
- const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
- return { default: mod.default || mod[exportName] }
- }),
- categories: undefined,
- meta: undefined,
- },
- "wheel-picker-demo": {
- name: "wheel-picker-demo",
- description: "",
- type: "registry:example",
- files: [{
- path: "src/registry/examples/wheel-picker-demo.tsx",
- type: "registry:example",
- target: "",
- }],
- component: React.lazy(async () => {
- const mod = await import("@/registry/examples/wheel-picker-demo.tsx")
- const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
- return { default: mod.default || mod[exportName] }
- }),
- categories: undefined,
- meta: undefined,
- },
- "wheel-picker-form-demo": {
- name: "wheel-picker-form-demo",
- description: "",
- type: "registry:example",
- files: [{
- path: "src/registry/examples/wheel-picker-form-demo.tsx",
- type: "registry:example",
- target: "",
- }],
- component: React.lazy(async () => {
- const mod = await import("@/registry/examples/wheel-picker-form-demo.tsx")
  const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
  return { default: mod.default || mod[exportName] }
  }),
