@@ -1,5 +1,6 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
+import { RssIcon } from "lucide-react"
 import type { Blog, WithContext } from "schema-dts"
 
 import { JSON_LD_ID } from "@/config/json-ld"
@@ -84,6 +85,13 @@ export default function Page() {
  Writing about code, design, and everything in between.
  </PageHeadingTitle>
  </PageHeading>
+
+ <div className="screen-line-top flex items-center gap-1.5 px-4 py-2 text-sm text-muted-foreground">
+ <RssIcon className="size-3.5" aria-hidden />
+ <a className="hover:text-foreground" href="/rss.xml">
+ Subscribe via RSS
+ </a>
+ </div>
 
  <div className="h-4" />
 
