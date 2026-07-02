@@ -143,10 +143,35 @@ async function main() {
  await copyFile(source, logoWithBg)
  await removeBackground(source, logoMark)
 
- await sharp(logoWithBg).resize(32, 32).png().toFile(path.join(root, "public", "favicon.png"))
- await sharp(logoWithBg).resize(180, 180).png().toFile(path.join(root, "public", "apple-touch-icon.png"))
+ // Favicons come from the transparent mark so browser tabs show no box.
+ await sharp(logoMark)
+ .resize(32, 32, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+ .png()
+ .toFile(path.join(root, "public", "favicon.png"))
+ await sharp(logoMark)
+ .resize(180, 180, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+ .png()
+ .toFile(path.join(root, "public", "apple-touch-icon.png"))
+
+ await createOgImage(path.join(outDir, "og-pkki.png"))
 
  console.log("Created brand assets in public/images/brand/ and favicon files in public/")
+}
+
+// Static OG image: 2D pixel PKKI on a dark background (1200x630).
+const WORDMARK_PATH =
+ "M0 0h32v32h-32zM32 0h32v32h-32zM64 0h32v32h-32zM96 0h32v32h-32zM0 32h32v32h-32zM128 32h32v32h-32zM0 64h32v32h-32zM128 64h32v32h-32zM0 96h32v32h-32zM32 96h32v32h-32zM64 96h32v32h-32zM96 96h32v32h-32zM0 128h32v32h-32zM0 160h32v32h-32zM0 192h32v32h-32zM192 0h32v32h-32zM320 0h32v32h-32zM192 32h32v32h-32zM288 32h32v32h-32zM192 64h32v32h-32zM256 64h32v32h-32zM192 96h32v32h-32zM224 96h32v32h-32zM192 128h32v32h-32zM256 128h32v32h-32zM192 160h32v32h-32zM288 160h32v32h-32zM192 192h32v32h-32zM320 192h32v32h-32zM384 0h32v32h-32zM512 0h32v32h-32zM384 32h32v32h-32zM480 32h32v32h-32zM384 64h32v32h-32zM448 64h32v32h-32zM384 96h32v32h-32zM416 96h32v32h-32zM384 128h32v32h-32zM448 128h32v32h-32zM384 160h32v32h-32zM480 160h32v32h-32zM384 192h32v32h-32zM512 192h32v32h-32zM576 0h32v32h-32zM608 0h32v32h-32zM640 0h32v32h-32zM672 0h32v32h-32zM704 0h32v32h-32zM640 32h32v32h-32zM640 64h32v32h-32zM640 96h32v32h-32zM640 128h32v32h-32zM640 160h32v32h-32zM576 192h32v32h-32zM608 192h32v32h-32zM640 192h32v32h-32zM672 192h32v32h-32zM704 192h32v32h-32z"
+
+async function createOgImage(output) {
+ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+ <rect width="1200" height="630" fill="#09090b"/>
+ <g transform="translate(232, 173)">
+ <path fill="#fafafa" d="${WORDMARK_PATH}"/>
+ </g>
+ <text x="600" y="500" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="36" fill="#a1a1aa">Igor Pukalski — Fullstack Developer</text>
+</svg>`
+
+ await sharp(Buffer.from(svg)).png().toFile(output)
 }
 
 main().catch((error) => {

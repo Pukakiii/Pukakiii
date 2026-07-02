@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import { MAIN_NAV } from "@/config/site"
 import { Separator } from "@/components/ui/separator"
-import { BrandMark } from "@/components/brand-mark"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
+import { PortfolioWordmark } from "@/components/portfolio-wordmark"
 import { SoundToggle } from "@/components/sound-toggle"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { getAllDocs } from "@/features/doc/data/documents"
@@ -32,7 +32,7 @@ export function SiteHeader() {
  <div className="screen-line-top screen-line-bottom mx-auto flex h-(--header-h) items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
  <BrandContextMenu>
  <Link href="/" aria-label="Home">
- <BrandMark className="h-8 shrink-0" />
+ <PortfolioWordmark className="h-5 w-auto shrink-0" />
  </Link>
  </BrandContextMenu>
 

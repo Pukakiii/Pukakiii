@@ -47,7 +47,7 @@ I use AI tooling heavily and deliberately — Claude and Cursor at high proficie
  darkOff: "/placeholder-avatar.svg",
  darkOn: "/placeholder-avatar.svg",
  },
- ogImage: "/placeholder-og.svg",
+ ogImage: "/images/brand/og-pkki.png",
  namePronunciationUrl: "",
  timeZone: "Europe/Warsaw",
  keywords: [

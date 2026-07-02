@@ -1,8 +1,11 @@
+import Image from "next/image"
+
 import { AvatarLights } from "@/features/portfolio/components/avatar-lights"
+import { BrandMarkIsometric } from "@/features/portfolio/components/brand-mark-isometric"
 import { USER } from "@/features/portfolio/data/user"
+import { BRAND_LOGO_SRC } from "@/components/brand-mark"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
-import { BrandMark } from "@/components/brand-mark"
 import { FlipSentences } from "./flip-sentences"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
@@ -11,7 +14,7 @@ export function ProfileHeader() {
  return (
  <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
  <figure className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
- <BrandMark variant="logo" className="h-auto w-full" priority />
+ <BrandMarkIsometric />
  <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
  FIG_001
  </figcaption>
@@ -31,6 +34,15 @@ export function ProfileHeader() {
  <div className="flex flex-col">
  <div className="z-1 mt-auto border-t border-line">
  <div className="flex items-center gap-2 pl-4">
+ <Image
+ src={BRAND_LOGO_SRC}
+ alt=""
+ width={64}
+ height={64}
+ aria-hidden
+ className="size-8 shrink-0 rounded-full object-cover select-none"
+ />
+
  <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
  {USER.displayName}
  </h1>
