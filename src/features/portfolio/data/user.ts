@@ -2,31 +2,44 @@ import type { User } from "@/features/portfolio/types/user"
 
 export const USER: User = {
  firstName: "Igor",
- lastName: "",
- displayName: "Pukakiii",
+ lastName: "Pukalski",
+ displayName: "Igor Pukalski",
  username: "pukakiii",
- gender: "non-binary",
- pronouns: "[Pronouns — to be updated]",
- bio: "Software developer building web apps, portfolio sites, and practical tools with TypeScript, React, Next.js, and Python.",
+ gender: "male",
+ pronouns: "he/him",
+ bio: "Fullstack developer and Computer Science student building web apps, AI-assisted workflows, and practical tools with TypeScript, React, Next.js, and Python.",
  flipSentences: [
- "Building with TypeScript & React.",
- "Shipping portfolio sites & dev tools.",
- "Exploring AI-assisted workflows.",
+ "Fullstack developer.",
+ "React + TypeScript in production.",
+ "Building AI & agent workflows.",
+ "Design-minded engineer.",
  ],
- address: "Europe",
- phoneNumberB64: "",
- emailB64: "",
+ address: "Warsaw, Poland",
+ phoneNumberB64: "KzQ4Nzg5MTkxNjQ0",
+ emailB64: "cHVrYWtpLmlwQGdtYWlsLmNvbQ==",
  website: "https://github.com/Pukakiii",
- jobTitle: "Software Developer",
+ jobTitle: "Fullstack Developer",
  jobs: [
  {
- title: "Software Developer",
- company: "[Company — to be updated]",
- website: "#",
- experienceId: "placeholder-1",
+ title: "Frontend Engineer",
+ company: "Flowtly",
+ website: "https://flowtly.com",
+ experienceId: "flowtly",
+ },
+ {
+ title: "Team Lead / Fullstack Developer",
+ company: "JobAgent",
+ website: "https://github.com/Pukakiii",
+ experienceId: "jobagent",
  },
  ],
- about: `I'm Igor (Pukakiii)—a software developer focused on modern web stacks and useful side projects. I build portfolio sites, job-search tooling, and learning projects across TypeScript, React, Next.js, and Python. Always iterating on clean UX and maintainable code.`,
+ about: `I'm Igor Pukalski (Pukakiii) — a fullstack developer based in Warsaw, Poland, currently studying Computer Science.
+
+I work across the stack: production React 18 + TypeScript frontends with large typed Redux state layers at Flowtly, and leading a 4-developer team shipping JobAgent end to end — architecture, frontend, backend, UI/UX, QA, and documentation.
+
+Before software, I spent years in creative production — branding, video, commercial photography, and web design for corporate clients, foundations, and public institutions. That background shapes how I build: design-minded, client-aware, and pragmatic.
+
+I use AI tooling heavily and deliberately — Claude and Cursor at high proficiency, personal agents, and local models via Ollama — grounded in ML and LLM fundamentals. Outside work: mathematics, language learning, and football — I used to play professionally.`,
  avatar: "/placeholder-avatar.svg",
  avatarVariants: {
  lightOff: "/placeholder-avatar.svg",
@@ -36,7 +49,17 @@ export const USER: User = {
  },
  ogImage: "/placeholder-og.svg",
  namePronunciationUrl: "",
- timeZone: "Europe/London",
- keywords: ["pukakiii", "igor", "software developer", "typescript", "react", "nextjs"],
+ timeZone: "Europe/Warsaw",
+ keywords: [
+ "igor pukalski",
+ "pukakiii",
+ "fullstack developer",
+ "frontend engineer",
+ "typescript",
+ "react",
+ "nextjs",
+ "python",
+ "warsaw",
+ ],
  dateCreated: "2026-01-01",
 }

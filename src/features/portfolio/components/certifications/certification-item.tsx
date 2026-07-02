@@ -72,10 +72,18 @@ export function CertificationItem({
 
  <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
  <h3 className="leading-snug font-medium text-balance">
- <a href={certification.credentialURL} target="_blank" rel="noopener">
+ {certification.credentialURL ? (
+ <a
+ href={certification.credentialURL}
+ target="_blank"
+ rel="noopener"
+ >
  <span className="absolute inset-0" aria-hidden />
  {certification.title}
  </a>
+ ) : (
+ certification.title
+ )}
  </h3>
 
  <dl className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
@@ -87,6 +95,8 @@ export function CertificationItem({
  </dd>
  </div>
 
+ {certification.issueDate && (
+ <>
  <Separator
  className="data-vertical:h-4 data-vertical:self-center"
  orientation="vertical"
@@ -96,11 +106,15 @@ export function CertificationItem({
  <div>
  <dt className="sr-only">Issued on</dt>
  <dd>
- <time dateTime={new Date(certification.issueDate).toISOString()}>
- {format(new Date(certification.issueDate), "dd.MM.yyyy")}
+ <time
+ dateTime={new Date(certification.issueDate).toISOString()}
+ >
+ {format(new Date(certification.issueDate), "MM.yyyy")}
  </time>
  </dd>
  </div>
+ </>
+ )}
  </dl>
  </div>
 

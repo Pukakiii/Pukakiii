@@ -48,4 +48,13 @@ export const PROJECTS: Project[] = [
  description: "Appointment scheduling interface built with React.",
  logo: "/placeholder-logo.svg",
  },
+ {
+ id: "assemblygame",
+ title: "assemblygame",
+ period: { start: "2023" },
+ link: "https://github.com/Pukakiii/assemblygame",
+ skills: ["JavaScript"],
+ description: "Browser game built with JavaScript.",
+ logo: "/placeholder-logo.svg",
+ },
 ]
