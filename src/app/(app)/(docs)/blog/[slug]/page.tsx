@@ -60,9 +60,7 @@ export async function generateMetadata({
  const { title, description, image, createdAt, updatedAt } = doc.metadata
 
  const postUrl = `/blog/${doc.slug}`
- const ogImage =
- image ||
- `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
+ const ogImage = image
 
  return {
  title,
@@ -75,18 +73,20 @@ export async function generateMetadata({
  type: "article",
  publishedTime: new Date(createdAt).toISOString(),
  modifiedTime: new Date(updatedAt).toISOString(),
+ ...(ogImage && {
  images: {
  url: ogImage,
  width: 1200,
  height: 630,
  alt: title,
  },
+ }),
  },
  twitter: {
- card: "summary_large_image",
+ card: ogImage ? "summary_large_image" : "summary",
  site: X_HANDLE,
  creator: X_HANDLE,
- images: [ogImage],
+ ...(ogImage && { images: [ogImage] }),
  },
  }
 }
@@ -100,11 +100,7 @@ function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
  "@id": absoluteUrl(postUrl),
  headline: doc.metadata.title,
  description: doc.metadata.description,
- image:
- doc.metadata.image ||
- absoluteUrl(
- `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`
- ),
+ ...(doc.metadata.image && { image: doc.metadata.image }),
  url: absoluteUrl(postUrl),
  datePublished: new Date(doc.metadata.createdAt).toISOString(),
  dateModified: new Date(doc.metadata.updatedAt).toISOString(),

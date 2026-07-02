@@ -15,11 +15,10 @@ export function TOC() {
  <TOCMinimap
  className="transition-opacity duration-200 data-[active-anchor=components]:opacity-30"
  items={[
- { title: "Components", url: "#components", depth: 2 },
+ { title: "Hello", url: "#hello", depth: 2 },
+ { title: "Explore", url: "#explore", depth: 2 },
+ { title: "Stack", url: "#stack", depth: 2 },
  { title: "Blog", url: "#blog", depth: 2 },
- { title: "Experience", url: "#experience", depth: 2 },
- { title: "Projects", url: "#projects", depth: 2 },
- { title: "Certifications", url: "#certs", depth: 2 },
  { title: "Insights", url: "#insights", depth: 2 },
  ]}
  options={{

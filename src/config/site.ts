@@ -13,7 +13,7 @@ export const SITE_INFO = {
 
 export const LICENSE = {
  name: "MIT License",
- url: "#",
+ url: "https://github.com/Pukakiii/Pukakiii/blob/main/LICENSE",
 }
 
 export const META_THEME_COLORS = {
@@ -22,22 +22,28 @@ export const META_THEME_COLORS = {
 }
 
 export const MAIN_NAV: NavItem<Route>[] = [
- { title: "Components", href: "/components" },
- { title: "Blocks", href: "/blocks" },
+ { title: "About", href: "/about" },
+ { title: "Experience", href: "/experience" },
+ { title: "Projects", href: "/projects" },
  { title: "Blog", href: "/blog" },
 ]
 
 export const MOBILE_NAV: NavItem<Route>[] = [
  { title: "Home", href: "/" },
- ...MAIN_NAV,
+ { title: "About", href: "/about" },
+ { title: "Experience", href: "/experience" },
+ { title: "Projects", href: "/projects" },
+ { title: "Skills", href: "/skills" },
+ { title: "Education", href: "/education" },
+ { title: "Blog", href: "/blog" },
+ { title: "Analytics", href: "/analytics" },
+ { title: "Contact", href: "/contact" },
 ]
 
-export const X_HANDLE = "[handle — to be updated]"
-export const GITHUB_USERNAME = "[handle — to be updated]"
+export const X_HANDLE = ""
+export const GITHUB_USERNAME = "Pukakiii"
 export const SOURCE_CODE_GITHUB_REPO = "Pukakiii/Pukakiii"
 export const SOURCE_CODE_GITHUB_URL = "https://github.com/Pukakiii/Pukakiii"
-
-export const SPONSORSHIP_URL = "#"
 
 export const UTM_PARAMS = {
  utm_source: "pukakiii-portfolio",

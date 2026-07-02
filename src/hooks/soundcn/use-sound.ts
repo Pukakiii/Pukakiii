@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "motion/react"
 
+import { useSoundPreference } from "@/hooks/soundcn/use-sound-preference"
 import { decodeAudioData, getAudioContext } from "@/lib/soundcn/sound-engine"
 import type {
  SoundAsset,
@@ -34,7 +35,8 @@ export function useSound(
  const bufferRef = useRef<AudioBuffer | null>(null)
 
  const shouldReduceMotion = useReducedMotion()
- const soundEnabled = _soundEnabled && !shouldReduceMotion
+ const { enabled: globalSoundEnabled } = useSoundPreference()
+ const soundEnabled = _soundEnabled && globalSoundEnabled && !shouldReduceMotion
 
  useEffect(() => {
  let cancelled = false

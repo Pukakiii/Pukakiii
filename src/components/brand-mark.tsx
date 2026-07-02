@@ -1,20 +1,37 @@
-export function BrandMark(props: React.ComponentProps<"svg">) {
+import Image from "next/image"
+
+import { cn } from "@/lib/utils"
+
+export const BRAND_MARK_SRC = "/images/brand/pkki-mark.png"
+export const BRAND_LOGO_SRC = "/images/brand/pkki-logo.png"
+
+type BrandMarkProps = Omit<
+ React.ComponentProps<typeof Image>,
+ "src" | "alt" | "width" | "height"
+> & {
+ variant?: "mark" | "logo"
+}
+
+export function BrandMark({
+ className,
+ variant = "mark",
+ ...props
+}: BrandMarkProps) {
+ const src = variant === "logo" ? BRAND_LOGO_SRC : BRAND_MARK_SRC
+
  return (
- <svg
- xmlns="http://www.w3.org/2000/svg"
- fill="none"
- viewBox="0 0 512 256"
+ <Image
+ src={src}
+ alt=""
+ width={1024}
+ height={1024}
  aria-hidden
+ className={cn("aspect-square object-contain", className)}
  {...props}
- >
- <path
- fill="currentColor"
- d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
  />
- </svg>
  )
 }
 
 export function getMarkSVG() {
- return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 128"><path fill="currentColor" d="M96 128H32V96h64v32ZM224 32h-64v64h64v32h-96V0h96v32ZM32 96H0V32h32v64ZM256 96h-32V32h32v64ZM96 32H32V0h64v32Z"/></svg>`
+ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="${BRAND_MARK_SRC}" width="1024" height="1024"/></svg>`
 }

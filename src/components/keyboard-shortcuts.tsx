@@ -18,9 +18,11 @@ export function KeyboardShortcuts() {
  }
 
  useHotkeys("g>h", () => navigate("/", "g>h"))
- useHotkeys("g>c", () => navigate("/components", "g>c"))
- useHotkeys("g>b", () => navigate("/blocks", "g>b"))
+ useHotkeys("g>a", () => navigate("/about", "g>a"))
+ useHotkeys("g>e", () => navigate("/experience", "g>e"))
+ useHotkeys("g>p", () => navigate("/projects", "g>p"))
  useHotkeys("g>l", () => navigate("/blog", "g>l"))
+ useHotkeys("g>c", () => navigate("/contact", "g>c"))
 
  return null
 }

@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator"
 import { BrandMark } from "@/components/brand-mark"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
+import { SoundToggle } from "@/components/sound-toggle"
 import { ThemeToggle } from "@/components/theme-toggle"
-import blocks from "@/registry/__blocks__.json"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 
@@ -45,7 +45,7 @@ export function SiteHeader() {
  orientation="vertical"
  className="mr-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
  />
- <CommandMenu docs={docPreviews} blocks={blocks} enabledHotkeys />
+ <CommandMenu docs={docPreviews} enabledHotkeys />
  <Separator
  orientation="vertical"
  className="mx-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
@@ -55,6 +55,7 @@ export function SiteHeader() {
  orientation="vertical"
  className="mx-2 data-vertical:h-5 data-vertical:self-center"
  />
+ <SoundToggle />
  <ThemeToggle />
  </div>
 

@@ -26,6 +26,10 @@ export function GitHubContributionGraph({
 }) {
  const data = use(contributions)
 
+ if (data.length === 0) {
+ return null
+ }
+
  return (
  <ContributionGraph
  className="mx-auto gap-4 py-4"

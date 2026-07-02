@@ -19,8 +19,6 @@ import { getBlogPosts } from "@/features/doc/data/documents"
 const title = "Blog"
 const description = "Writing about code, design, and everything in between."
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
-
 export const metadata: Metadata = {
  title,
  description,
@@ -30,18 +28,11 @@ export const metadata: Metadata = {
  openGraph: {
  url: "/blog",
  type: "website",
- images: {
- url: ogImage,
- width: 1200,
- height: 630,
- alt: title,
- },
  },
  twitter: {
- card: "summary_large_image",
+ card: "summary",
  site: X_HANDLE,
  creator: X_HANDLE,
- images: [ogImage],
  },
 }
 
