@@ -80,24 +80,18 @@ export const metadata: Metadata = {
  icons: {
  icon: [
  {
- url: "/placeholder-assets/images/favicon.ico",
+ url: "/favicon.png",
  sizes: "32x32",
+ type: "image/png",
  },
  {
- url: "/placeholder-assets/images/favicon.svg",
- sizes: "any",
- type: "image/svg+xml",
- media: "(prefers-color-scheme: light)",
- },
- {
- url: "/placeholder-assets/images/favicon-dark.svg",
- sizes: "any",
- type: "image/svg+xml",
- media: "(prefers-color-scheme: dark)",
+ url: "/images/brand/pkki-logo.png",
+ sizes: "512x512",
+ type: "image/png",
  },
  ],
  apple: {
- url: "/placeholder-assets/images/apple-touch-icon.png",
+ url: "/apple-touch-icon.png",
  type: "image/png",
  sizes: "180x180",
  },
