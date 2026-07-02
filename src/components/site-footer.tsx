@@ -23,6 +23,38 @@ export function SiteFooter() {
  </Item>
 
  <Item>
+ <dt>Built with</dt>
+ <dd>
+ <a
+ className="link-underline"
+ href="https://nextjs.org"
+ target="_blank"
+ rel="noopener"
+ >
+ Next.js
+ </a>
+ {", "}
+ <a
+ className="link-underline"
+ href="https://ui.shadcn.com"
+ target="_blank"
+ rel="noopener"
+ >
+ shadcn/ui
+ </a>
+ {", "}
+ <a
+ className="link-underline"
+ href="https://tailwindcss.com"
+ target="_blank"
+ rel="noopener"
+ >
+ Tailwind CSS
+ </a>
+ </dd>
+ </Item>
+
+ <Item>
  <dt>Analytics</dt>
  <dd>OpenPanel</dd>
  </Item>
