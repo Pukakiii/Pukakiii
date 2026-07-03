@@ -9,6 +9,7 @@ alwaysApply: false
 ## Track
 
 - **Remote:** https://github.com/Pukakiii/Pukakiii.git
+- **Attribution:** handled manually by the user at deploy. Do not add credits anywhere in shipped code; do not delete the existing committed `LICENSE` without an explicit request.
 - **Profile:** Read `PK_data.md` first. Never commit it.
 - **Resume source:** `resume collection/` is a symlink to `~/Documents/resume collection` (see `resume.config.json`). Never commit it. Run `npm run resume:link` after clone if the link is missing.
 - Initial 7-day auto-ship is **complete** (21/21 slices). Development is now direct commits on `main`.

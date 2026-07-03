@@ -41,8 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#
-.
+# local tooling
+.cursor/plans/
+PROJECT_SUMMARY.md
+PORTFOLIO_REFINEMENT_PROMPT.md
 
 # local profile + resume (never commit)
 PK_data.md
@@ -50,5 +52,3 @@ PK_pp.jpeg
 resume collection
 resume.config.json
 .ship/
-PROJECT_SUMMARY.md
-PORTFOLIO_REFINEMENT_PROMPT.md
