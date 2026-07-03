@@ -20,7 +20,23 @@ export async function Insights() {
  const data = await getInsights()
 
  if (data === null) {
- return null
+ return (
+ <Panel id={ID}>
+ <PanelHeader>
+ <PanelTitle>
+ <a href={`#${ID}`}>Insights</a>
+ <PanelTitleCopy id={ID} />
+ </PanelTitle>
+ </PanelHeader>
+
+ <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
+ <p className="px-4 text-center text-sm text-balance text-muted-foreground">
+ Analytics unavailable — configure the OpenPanel environment
+ variables to enable this section.
+ </p>
+ </div>
+ </Panel>
+ )
  }
 
  return (
