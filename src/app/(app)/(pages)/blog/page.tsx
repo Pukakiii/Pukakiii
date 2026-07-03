@@ -12,6 +12,7 @@ import {
  PageHeadingTagline,
  PageHeadingTitle,
 } from "@/components/page-heading"
+import { FeedSection } from "@/features/blog/components/feed-section"
 import { PostList } from "@/features/blog/components/post-list"
 import { PostListWithSearch } from "@/features/blog/components/post-list-with-search"
 import { PostSearchInput } from "@/features/blog/components/post-search-input"
@@ -110,6 +111,10 @@ export default function Page() {
  </Suspense>
 
  <div className="h-4" />
+
+ <Suspense>
+ <FeedSection />
+ </Suspense>
  </div>
  </>
  )
