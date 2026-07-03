@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-import { MAIN_NAV } from "@/config/site"
+import { MAIN_NAV, MORE_NAV } from "@/config/site"
 import { Separator } from "@/components/ui/separator"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
@@ -38,7 +38,7 @@ export function SiteHeader() {
 
  <div className="flex-1" />
 
- <NavDesktop items={MAIN_NAV} />
+ <NavDesktop items={MAIN_NAV} moreItems={MORE_NAV} />
 
  <div className="flex items-center max-sm:*:data-[slot=command-menu-trigger]:hidden">
  <Separator

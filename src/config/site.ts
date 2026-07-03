@@ -28,6 +28,14 @@ export const MAIN_NAV: NavItem<Route>[] = [
  { title: "Blog", href: "/blog" },
 ]
 
+/** Overflow links rendered in the desktop "More" dropdown. */
+export const MORE_NAV: NavItem<Route>[] = [
+ { title: "Skills", href: "/skills" },
+ { title: "Education", href: "/education" },
+ { title: "Analytics", href: "/analytics" },
+ { title: "Contact", href: "/contact" },
+]
+
 export const MOBILE_NAV: NavItem<Route>[] = [
  { title: "Home", href: "/" },
  { title: "About", href: "/about" },
