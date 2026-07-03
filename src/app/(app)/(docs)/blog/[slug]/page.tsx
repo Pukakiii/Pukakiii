@@ -28,7 +28,6 @@ import {
  DocLeftCol,
  DocRightCol,
 } from "@/features/doc/components/doc-layout"
-import { LLMCopyButtonWithViewOptions } from "@/features/doc/components/doc-page-actions"
 import { DocPageRoot } from "@/features/doc/components/doc-page-root"
 import { DocShareMenu } from "@/features/doc/components/doc-share-menu"
 import {
@@ -172,10 +171,6 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
  </Button>
 
  <div className="flex items-center gap-2">
- <LLMCopyButtonWithViewOptions
- markdownUrl={`/blog/${doc.slug}.mdx`}
- />
-
  <DocShareMenu
  title={doc.metadata.title}
  url={`/blog/${doc.slug}`}

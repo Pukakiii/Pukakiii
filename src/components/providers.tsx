@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/components/ui/tooltip"
 import { TooltipProvider as BaseTooltipProvider } from "@/components/base/ui/tooltip"
 import { KeyboardShortcuts } from "@/components/keyboard-shortcuts"
-import { ConsentManager } from "@/registry/components/consent-manager/consent-manager"
+import { ConsentManager } from "@/components/consent-manager/consent-manager"
 
 export function Providers({ children }: { children: React.ReactNode }) {
  return (

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import {
  IconSwap,
  IconSwapItem,
-} from "@/registry/transformed/components/icon-swap"
+} from "@/components/icon-swap"
 
 export type CopyStateIconProps = {
  state: CopyState
