@@ -1,9 +1,6 @@
-import Image from "next/image"
-
 import { AvatarLights } from "@/features/portfolio/components/avatar-lights"
 import { BrandMarkIsometric } from "@/features/portfolio/components/brand-mark-isometric"
 import { USER } from "@/features/portfolio/data/user"
-import { BRAND_LOGO_SRC } from "@/components/brand-mark"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
 import { FlipSentences } from "./flip-sentences"
@@ -33,17 +30,8 @@ export function ProfileHeader() {
 
  <div className="flex flex-col">
  <div className="z-1 mt-auto border-t border-line">
- <div className="flex items-center gap-2 pl-4">
- <Image
- src={BRAND_LOGO_SRC}
- alt=""
- width={64}
- height={64}
- aria-hidden
- className="size-8 shrink-0 rounded-full object-cover select-none"
- />
-
- <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
+        <div className="flex items-center gap-2 pl-4">
+          <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
  {USER.displayName}
  </h1>
 

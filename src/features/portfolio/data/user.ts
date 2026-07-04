@@ -40,12 +40,12 @@ I work across the stack: production React 18 + TypeScript frontends with large t
 Before software, I spent years in creative production — branding, video, commercial photography, and web design for corporate clients, foundations, and public institutions. That background shapes how I build: design-minded, client-aware, and pragmatic.
 
 I use AI tooling heavily and deliberately — Claude and Cursor at high proficiency, personal agents, and local models via Ollama — grounded in ML and LLM fundamentals. Outside work: mathematics, language learning, and football — I used to play professionally.`,
- avatar: "/placeholder-avatar.svg",
+ avatar: "/images/brand/pkki-logo.png",
  avatarVariants: {
- lightOff: "/placeholder-avatar.svg",
- lightOn: "/placeholder-avatar.svg",
- darkOff: "/placeholder-avatar.svg",
- darkOn: "/placeholder-avatar.svg",
+ lightOff: "/images/brand/pkki-logo.png",
+ lightOn: "/images/brand/pkki-mark.png",
+ darkOff: "/images/brand/pkki-mark.png",
+ darkOn: "/images/brand/pkki-logo.png",
  },
  ogImage: "/images/brand/og-pkki.png",
  namePronunciationUrl: "",
