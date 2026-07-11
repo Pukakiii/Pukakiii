@@ -5,16 +5,15 @@ import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 import { Tag } from "@/components/ui/tag"
 import { Prose } from "@/components/ui/typography"
+import { CollapsibleChevronsUpDownIcon } from "@/components/base/collapsible-animated"
 import {
- Collapsible,
- CollapsibleChevronsUpDownIcon,
-} from "@/components/base/collapsible-animated"
-import {
- CollapsibleContent,
- CollapsibleTrigger,
+  CollapsibleContent,
+  CollapsibleTrigger,
 } from "@/components/base/ui/collapsible"
 import { Markdown } from "@/components/markdown"
 import type { ExperiencePosition } from "@/features/portfolio/types/experiences"
+
+import { ExperiencePositionCollapsible } from "./experience-filter"
 
 export function ExperiencePositionItem({
  position,
@@ -25,12 +24,13 @@ export function ExperiencePositionItem({
  const isOngoing = !end
  const duration = formatDuration(start, end)
 
- return (
- <Collapsible
- className="group/experience-position relative"
- defaultOpen={position.isExpanded}
- disabled={!position.description}
- >
+  return (
+    <ExperiencePositionCollapsible
+      className="group/experience-position relative"
+      category={position.category}
+      defaultOpen={position.isExpanded}
+      disabled={!position.description}
+    >
  <div className="pointer-events-none absolute bottom-0 left-3 hidden size-4 bg-background group-last/experience-position:flex">
  <span className="size-full -translate-y-2.25 rounded-bl-sm border-b border-l" />
  </div>
@@ -110,46 +110,50 @@ export function ExperiencePositionItem({
 
  <CollapsibleContent className="overflow-hidden">
  {position.description && (
- <Prose className="pt-2 pl-9">
+ <Prose className="prose-base prose-no-margin pt-2 pl-9 leading-relaxed">
  <Markdown>{position.description}</Markdown>
  </Prose>
  )}
  </CollapsibleContent>
 
- {Array.isArray(position.skills) && position.skills.length > 0 && (
- <ul className="flex flex-wrap gap-1.5 pt-3 pl-9">
- {position.skills.map((skill, index) => (
- <li key={index} className="flex">
- <Tag>{skill}</Tag>
- </li>
- ))}
- </ul>
- )}
- </Collapsible>
- )
+      {Array.isArray(position.skills) && position.skills.length > 0 && (
+        <ul
+          data-slot="experience-skills"
+          className="flex flex-wrap gap-2 pt-3 pl-9"
+        >
+          {position.skills.map((skill, index) => (
+            <li key={index} className="flex">
+              <Tag className="text-sm">{skill}</Tag>
+            </li>
+          ))}
+        </ul>
+      )}
+    </ExperiencePositionCollapsible>
+  )
 }
 
 function formatDuration(start: string, end?: string): string {
  const startHasMonth = start.includes(".")
  const endHasMonth = end ? end.includes(".") : true
 
- // Both year-only: granularity is years, no month arithmetic needed.
- if (!startHasMonth && end && !endHasMonth) {
- const years = parseInt(end, 10) - parseInt(start, 10)
- if (years <= 0) {
- return ""
- }
- return `${years}y`
- }
+  // Both year-only: granularity is years, no month arithmetic needed.
+  if (!startHasMonth && end && !endHasMonth) {
+    const years = parseInt(end, 10) - parseInt(start, 10)
+    if (!Number.isFinite(years) || years <= 0) {
+      return ""
+    }
+    return `${years}y`
+  }
 
  const startDate = parsePeriodDate(start, "first")
  const endDate = end ? parsePeriodDate(end, "last") : new Date()
 
- // +1 to count both the start and end months inclusively.
- const totalMonths = differenceInMonths(endDate, startDate) + 1
- if (totalMonths <= 0) {
- return ""
- }
+  // +1 to count both the start and end months inclusively.
+  // Non-finite when a period uses bracketed placeholder dates.
+  const totalMonths = differenceInMonths(endDate, startDate) + 1
+  if (!Number.isFinite(totalMonths) || totalMonths <= 0) {
+    return ""
+  }
 
  if (totalMonths < 12) {
  return `${totalMonths}m`

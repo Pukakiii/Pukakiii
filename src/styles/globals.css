@@ -173,6 +173,7 @@
 }
 
 @utility prose-portfolio {
+ @apply prose-p:text-base prose-li:text-base prose-p:leading-relaxed prose-li:leading-relaxed;
  @apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance prose-h2:text-xl prose-h3:text-lg;
  @apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline;
  @apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-1 prose-code:py-px prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none retina:prose-code:border-[0.5px];
@@ -341,9 +342,10 @@
  --chart-ring-background: oklch(0.9 0.005 260 / 0.25);
  --chart-label: oklch(0.45 0.01 260);
 
- /* Layout */
- --header-height: --spacing(14);
- --fade-bottom-height: --spacing(24);
+  /* Layout */
+  --header-height: --spacing(14);
+  --fade-bottom-height: --spacing(24);
+  --fade-top-height: --spacing(10);
 }
 
 .dark {
@@ -576,22 +578,7 @@
  background: var(--fade-background, var(--fade-linear-gradient));
  }
 
- /* .duck-follower {
- position: fixed;
- top: 0;
- left: 0;
- z-index: 50;
-
- pointer-events: none;
- image-rendering: pixelated;
- image-rendering: -moz-crisp-edges;
- image-rendering: crisp-edges;
-
- will-change: transform;
- transition: none;
- } */
-
- .twemoji {
+.twemoji {
  display: inline-block;
  height: 1em;
  width: 1em;

@@ -110,16 +110,16 @@ export function ProjectItem({
  <CollapsibleContent className="overflow-hidden">
  <div className="space-y-4 border-t border-line p-4">
  {project.description && (
- <Prose>
+ <Prose className="prose-base prose-no-margin leading-relaxed">
  <Markdown>{project.description}</Markdown>
  </Prose>
  )}
 
  {project.skills.length > 0 && (
- <ul className="flex flex-wrap gap-1.5">
+ <ul className="flex flex-wrap gap-2">
  {project.skills.map((skill, index) => (
  <li key={index} className="flex">
- <Tag>{skill}</Tag>
+ <Tag className="text-sm">{skill}</Tag>
  </li>
  ))}
  </ul>

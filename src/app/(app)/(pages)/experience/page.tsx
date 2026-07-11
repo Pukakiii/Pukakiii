@@ -36,8 +36,6 @@ export default function Page() {
  <PageHeadingTitle>{description}</PageHeadingTitle>
  </PageHeading>
 
- <div className="h-4" />
-
  <Experiences />
  </div>
  </>

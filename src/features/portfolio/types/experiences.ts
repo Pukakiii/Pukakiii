@@ -1,6 +1,15 @@
+/** Career track a position belongs to; drives the /experience tab filter. */
+export type ExperiencePositionCategory =
+  | "developer"
+  | "marketing"
+  | "creative"
+  | "operations"
+
 export type ExperiencePosition = {
- id: string
- title: string
+  id: string
+  title: string
+  /** Career track for the /experience category tabs. */
+  category?: ExperiencePositionCategory
  /**
  * Employment period of the position.
  * Use "MM.YYYY" or "YYYY" format. Omit `end` for current roles.
