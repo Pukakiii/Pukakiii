@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { copyText } from "@/utils/copy"
 import { useTiks } from "@rexa-developer/tiks/react"
-import { Download, SquareDashed, Type } from "lucide-react"
+import { SquareDashed, Type } from "lucide-react"
 import { toast } from "sonner"
 
 import {
@@ -50,18 +50,11 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
  <ContextMenuSeparator />
 
  <ContextMenuItem asChild>
- <Link href="/blog/portfolio-brand">
- <SquareDashed />
- Brand Guidelines
- </Link>
- </ContextMenuItem>
-
- <ContextMenuItem asChild>
- <a href="/placeholder-assets/portfolio-brand.zip" download>
- <Download />
- Download Brand Assets
- </a>
- </ContextMenuItem>
+          <Link href="/blog/portfolio-brand">
+            <SquareDashed />
+            Brand Guidelines
+          </Link>
+        </ContextMenuItem>
  </ContextMenuContent>
  </ContextMenu>
  )

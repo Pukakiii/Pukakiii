@@ -22,12 +22,6 @@ import { USER } from "@/features/portfolio/data/user"
 
 const TOC = dynamic(() => import("@/features/portfolio/components/toc"))
 
-const DuckFollower = dynamic(() =>
- import("@/features/portfolio/components/duck-follower/duck-follower").then(
- (mod) => mod.DuckFollower
- )
-)
-
 export const metadata: Metadata = {
  alternates: {
  canonical: "/",
@@ -39,8 +33,7 @@ export default function HomePage() {
  <>
  <JsonLdScript data={getProfilePageJsonLd()} />
 
- <TOC />
- <DuckFollower />
+      <TOC />
 
  <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
  <div className="mx-auto md:max-w-3xl">
