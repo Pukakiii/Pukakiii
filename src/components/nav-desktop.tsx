@@ -1,19 +1,45 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import type { Route } from "next"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronDownIcon } from "lucide-react"
 
 import type { NavItem } from "@/types/nav"
 import { cn } from "@/lib/utils"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Nav } from "@/components/nav"
+import { NavItem as NavLink } from "@/components/nav"
+import { NavSwapTrack } from "@/components/nav-swap-track"
+import { haptic } from "@/lib/haptic"
+
+function NavLinks({
+  items,
+  pathname,
+}: {
+  items: NavItem<Route>[]
+  pathname: string
+}) {
+  return (
+    <>
+      {items.map(({ title, href }) => {
+        const isActive =
+          pathname === href ||
+          (href === "/"
+            ? ["/", "/index"].includes(pathname || "")
+            : pathname?.startsWith(href))
+
+        return (
+          <NavLink
+            key={href}
+            href={href}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {title}
+          </NavLink>
+        )
+      })}
+    </>
+  )
+}
 
 export function NavDesktop({
   items,
@@ -23,56 +49,67 @@ export function NavDesktop({
   moreItems?: NavItem<Route>[]
 }) {
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
-  return (
-    <div className="flex items-center gap-4 max-sm:hidden">
-      <Nav items={items} activeId={pathname} />
+  const hasMore = Boolean(moreItems && moreItems.length > 0)
 
-      {moreItems && moreItems.length > 0 && (
-        <NavMoreDropdown items={moreItems} activeId={pathname} />
-      )}
-    </div>
+  const isAnyMoreActive = moreItems?.some((item) =>
+    pathname?.startsWith(item.href)
   )
-}
 
-function NavMoreDropdown({
-  items,
-  activeId,
-}: {
-  items: NavItem<Route>[]
-  activeId?: string
-}) {
-  const isAnyActive = items.some((item) => activeId?.startsWith(item.href))
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  if (!hasMore) {
+    return (
+      <div className="flex items-center gap-4 max-sm:hidden">
+        <nav className="flex items-center gap-4" aria-label="Main">
+          <NavLinks items={items} pathname={pathname ?? ""} />
+        </nav>
+      </div>
+    )
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger
-        className={cn(
-          "flex items-center gap-1 text-sm font-medium tracking-wide text-muted-foreground transition-[color] outline-none hover:text-foreground data-[state=open]:text-foreground",
-          isAnyActive && "text-foreground"
-        )}
+    <div className="flex shrink-0 items-center gap-4 max-sm:hidden">
+      <nav aria-label="Main">
+        <NavSwapTrack
+          open={open}
+          primary={<NavLinks items={items} pathname={pathname ?? ""} />}
+          secondary={
+            <NavLinks items={moreItems!} pathname={pathname ?? ""} />
+          }
+        />
+      </nav>
+
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-label="More"
+        data-state={open ? "open" : "closed"}
+        className="group shrink-0 touch-manipulation outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-ring/50"
+        onClick={() => {
+          haptic()
+          setOpen((prev) => !prev)
+        }}
       >
-        More
-        <ChevronDownIcon className="size-3.5" aria-hidden />
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent align="end">
-        {items.map(({ title, href }) => {
-          const isActive = activeId?.startsWith(href)
-
-          return (
-            <DropdownMenuItem key={href} asChild>
-              <Link
-                href={href}
-                aria-current={isActive ? "page" : undefined}
-                className="aria-[current=page]:text-foreground aria-[current=page]:font-medium"
-              >
-                {title}
-              </Link>
-            </DropdownMenuItem>
-          )
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+        <span
+          className={cn(
+            "flex items-center gap-1 text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground group-data-[state=open]:text-foreground",
+            isAnyMoreActive && !open && "text-foreground"
+          )}
+        >
+          More
+          <ChevronDownIcon
+            className={cn(
+              "size-3.5 transition-transform duration-300 motion-reduce:transition-none",
+              open && "rotate-180"
+            )}
+            aria-hidden
+          />
+        </span>
+      </button>
+    </div>
   )
 }

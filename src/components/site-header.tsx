@@ -8,6 +8,7 @@ import { NavItemGitHub } from "@/components/nav-item-github"
 import { PortfolioWordmark } from "@/components/portfolio-wordmark"
 import { SoundToggle } from "@/components/sound-toggle"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { SiteHeaderContainer } from "@/components/site-header-container"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 
@@ -27,8 +28,8 @@ export function SiteHeader() {
  category: doc.metadata.category,
  }))
 
- return (
- <header className="sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2 pt-(--header-pt) [--header-h:calc(var(--header-height)-var(--header-pt))] [--header-pt:--spacing(2)]">
+  return (
+    <SiteHeaderContainer>
  <div className="screen-line-top screen-line-bottom mx-auto flex h-(--header-h) items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
  <BrandContextMenu>
  <Link href="/" aria-label="Home">
@@ -59,9 +60,9 @@ export function SiteHeader() {
  <ThemeToggle />
  </div>
 
- {/* <div className="absolute top-[-3.5px] left-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
- {/* <div className="absolute top-[-3.5px] right-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
- </div>
- </header>
- )
+        {/* <div className="absolute top-[-3.5px] left-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
+        {/* <div className="absolute top-[-3.5px] right-[-4.5px] z-2 flex size-2 border border-line bg-background" /> */}
+      </div>
+    </SiteHeaderContainer>
+  )
 }

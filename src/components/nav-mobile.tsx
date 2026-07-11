@@ -1,90 +1,144 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import { useEffect, useState } from "react"
 import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import {
+  BarChart3Icon,
+  BriefcaseBusinessIcon,
+  FolderGit2Icon,
+  GalleryHorizontalEndIcon,
+  GraduationCapIcon,
+  HouseIcon,
+  MailIcon,
+  NewspaperIcon,
+  SparklesIcon,
+  UserRoundIcon,
+} from "lucide-react"
 
 import type { NavItem } from "@/types/nav"
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
-import {
- Popover,
- PopoverContent,
- PopoverTrigger,
-} from "@/components/ui/popover"
+import { cn } from "@/lib/utils"
+import { NavSwapTrack } from "@/components/nav-swap-track"
 import { haptic } from "@/lib/haptic"
 
+const QUICK_LINK_ICONS: Record<string, React.ReactNode> = {
+  "/": <HouseIcon />,
+  "/about": <UserRoundIcon />,
+  "/experience": <BriefcaseBusinessIcon />,
+  "/projects": <FolderGit2Icon />,
+}
+
+const MORE_LINK_ICONS: Record<string, React.ReactNode> = {
+  "/skills": <SparklesIcon />,
+  "/education": <GraduationCapIcon />,
+  "/blog": <NewspaperIcon />,
+  "/analytics": <BarChart3Icon />,
+  "/contact": <MailIcon />,
+}
+
+function NavIconLink({
+  href,
+  title,
+  icon,
+  isActive,
+}: {
+  href: Route
+  title: string
+  icon: React.ReactNode
+  isActive: boolean
+}) {
+  return (
+    <Link
+      href={href}
+      aria-label={title}
+      aria-current={isActive ? "page" : undefined}
+      className={cn(
+        "flex size-8 touch-manipulation items-center justify-center rounded-lg text-muted-foreground",
+        "transition-[color,background-color] hover:text-foreground aria-[current=page]:bg-accent aria-[current=page]:text-foreground",
+        "[&_svg]:size-4.5"
+      )}
+      onClick={() => haptic()}
+    >
+      {icon}
+    </Link>
+  )
+}
+
 export function NavMobile({ items }: { items: NavItem<Route>[] }) {
- const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
- const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
+  const quickLinks = items.filter(({ href }) => href in QUICK_LINK_ICONS)
+  const moreLinks = items.filter(({ href }) => href in MORE_LINK_ICONS)
 
- const pathname = usePathname()
+  const renderLinks = (links: NavItem<Route>[], icons: Record<string, React.ReactNode>) =>
+    links.map(({ title, href }) => {
+      const isActive =
+        pathname === href ||
+        (href === "/"
+          ? ["/", "/index"].includes(pathname || "")
+          : pathname?.startsWith(href))
 
- const handleOpenChange = useCallback((open: boolean) => {
- haptic()
- setOpen(open)
- }, [])
+      return (
+        <NavIconLink
+          key={href}
+          href={href}
+          title={title}
+          icon={icons[href]}
+          isActive={Boolean(isActive)}
+        />
+      )
+    })
 
- if (isDesktop) {
- return <NavMobileTrigger />
- }
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
- return (
- <Popover open={open} onOpenChange={handleOpenChange} modal>
- <PopoverTrigger asChild>
- <NavMobileTrigger />
- </PopoverTrigger>
+  if (moreLinks.length === 0) {
+    return (
+      <nav className="flex items-center gap-1" aria-label="Main">
+        {renderLinks(quickLinks, QUICK_LINK_ICONS)}
+      </nav>
+    )
+  }
 
- <PopoverContent
- className="w-48 rounded-xl p-1"
- side="top"
- align="center"
- sideOffset={8}
- onCloseAutoFocus={(e) => e.preventDefault()}
- >
- <div className="flex flex-col">
- {items.map((link) => {
- const isActive =
- pathname === link.href ||
- (link.href === "/" // Home page
- ? ["/", "/index"].includes(pathname || "")
- : pathname?.startsWith(link.href))
+  return (
+    <div className="flex shrink-0 items-center gap-1">
+      <nav aria-label="Main">
+        <NavSwapTrack
+          open={open}
+          gapClassName="gap-1"
+          primary={renderLinks(quickLinks, QUICK_LINK_ICONS)}
+          secondary={renderLinks(moreLinks, MORE_LINK_ICONS)}
+        />
+      </nav>
 
- return (
- <Link
- key={link.href}
- href={link.href}
- aria-current={isActive ? "page" : undefined}
- className="rounded-lg px-3 py-1.5 text-base aria-[current=page]:bg-accent"
- onClick={() => handleOpenChange(false)}
- >
- {link.title}
- </Link>
- )
- })}
- </div>
- </PopoverContent>
- </Popover>
- )
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-label="More pages"
+        data-state={open ? "open" : "closed"}
+        className="group shrink-0 touch-manipulation outline-none focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-ring/50"
+        onClick={() => {
+          haptic()
+          setOpen((prev) => !prev)
+        }}
+      >
+        <span
+          className={cn(
+            "flex size-8 items-center justify-center rounded-lg text-muted-foreground",
+            "transition-[color,background-color,transform] duration-300 hover:text-foreground",
+            "group-data-[state=open]:bg-accent group-data-[state=open]:text-foreground group-data-[state=open]:rotate-90",
+            "motion-reduce:group-data-[state=open]:rotate-0",
+            "[&_svg]:size-4.5"
+          )}
+        >
+          <GalleryHorizontalEndIcon aria-hidden />
+        </span>
+      </button>
+    </div>
+  )
 }
 
 export default NavMobile
-
-function NavMobileTrigger(
- props: Omit<React.ComponentProps<typeof Button>, "children">
-) {
- return (
- <Button
- className="group relative flex touch-manipulation flex-col gap-1 border-none before:absolute before:-inset-x-2 before:-top-8 before:-bottom-1 active:scale-none aria-expanded:bg-accent"
- variant="ghost"
- size="icon-sm"
- aria-label="Toggle Menu"
- {...props}
- >
- <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:translate-y-0.75 group-data-[state=open]:rotate-45" />
- <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]:-translate-y-0.75 group-data-[state=open]:-rotate-45" />
- </Button>
- )
-}
