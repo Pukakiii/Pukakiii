@@ -14,7 +14,6 @@ import {
   IntroItemIcon,
   IntroItemLink,
 } from "./intro-item"
-import { JobItem } from "./job-item"
 import { PhoneItem } from "./phone-item"
 
 export function Overview() {
@@ -23,18 +22,6 @@ export function Overview() {
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
-        {USER.jobs.map((job, index) => {
-          return (
-            <JobItem
-              key={index}
-              title={job.title}
-              company={job.company}
-              website={job.website}
-              experienceId={job.experienceId}
-            />
-          )
-        })}
-
         <IntroItem>
           <IntroItemIcon>
             <MapPinIcon />
