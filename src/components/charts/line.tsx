@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useId, useRef, useState } from "react"
 import { curveNatural } from "@visx/curve"
 import { LinePath } from "@visx/shape"
 import { motion, useMotionTemplate, useSpring } from "motion/react"
@@ -55,17 +55,22 @@ export function Line({
 
  const pathRef = useRef<SVGPathElement>(null)
  const [pathLength, setPathLength] = useState(0)
+ const [pathD, setPathD] = useState("")
 
- // Unique gradient ID for this line
- const gradientId = useMemo(
- () => `line-gradient-${dataKey}-${Math.random().toString(36).slice(2, 9)}`,
- [dataKey]
- )
+ // Unique, stable gradient ID for this line
+ const rawId = useId()
+ const gradientId = `line-gradient-${dataKey}-${rawId.replace(/:/g, "")}`
 
+ // Measure the rendered path (length for animation, `d` for the highlight
+ // overlay) once it exists in the DOM. Reading the ref here is fine — this
+ // runs after render, not during it.
  // biome-ignore lint/correctness/useExhaustiveDependencies: data, innerWidth
  useEffect(() => {
- if (pathRef.current && animate) {
- const len = pathRef.current.getTotalLength()
+ const path = pathRef.current
+ if (!path) return
+ setPathD(path.getAttribute("d") || "")
+ if (animate) {
+ const len = path.getTotalLength()
  if (len > 0) {
  setPathLength(len)
  }
@@ -97,26 +102,30 @@ export function Line({
  [pathLength]
  )
 
- // Calculate segment bounds for highlight from either selection or hover
- const segmentBounds = useMemo(() => {
- if (!pathRef.current || pathLength === 0) {
- return { startLength: 0, segmentLength: 0, isActive: false }
- }
+ // Calculate segment bounds for highlight from either selection or hover.
+ // This measures the SVG path (via refs), so it runs in an effect and stores
+ // the result in state rather than reading refs during render.
+ const [segmentBounds, setSegmentBounds] = useState({
+ startLength: 0,
+ segmentLength: 0,
+ isActive: false,
+ })
+
+ useEffect(() => {
+ const path = pathRef.current
+ const inactive = { startLength: 0, segmentLength: 0, isActive: false }
+
+ const next = (() => {
+ if (!path || pathLength === 0) return inactive
 
  // Selection takes priority over hover
  if (selection?.active) {
  const startLength = findLengthAtX(selection.startX)
  const endLength = findLengthAtX(selection.endX)
- return {
- startLength,
- segmentLength: endLength - startLength,
- isActive: true,
- }
+ return { startLength, segmentLength: endLength - startLength, isActive: true }
  }
 
- if (!tooltipData) {
- return { startLength: 0, segmentLength: 0, isActive: false }
- }
+ if (!tooltipData) return inactive
 
  const idx = tooltipData.index
  const startIdx = Math.max(0, idx - 1)
@@ -124,9 +133,7 @@ export function Line({
 
  const startPoint = data[startIdx]
  const endPoint = data[endIdx]
- if (!(startPoint && endPoint)) {
- return { startLength: 0, segmentLength: 0, isActive: false }
- }
+ if (!(startPoint && endPoint)) return inactive
 
  const startX = xScale(xAccessor(startPoint)) ?? 0
  const endX = xScale(xAccessor(endPoint)) ?? 0
@@ -134,11 +141,17 @@ export function Line({
  const startLength = findLengthAtX(startX)
  const endLength = findLengthAtX(endX)
 
- return {
- startLength,
- segmentLength: endLength - startLength,
- isActive: true,
- }
+ return { startLength, segmentLength: endLength - startLength, isActive: true }
+ })()
+
+ // No-op when unchanged so measuring never triggers a cascading render.
+ setSegmentBounds((prev) =>
+ prev.startLength === next.startLength &&
+ prev.segmentLength === next.segmentLength &&
+ prev.isActive === next.isActive
+ ? prev
+ : next
+ )
  }, [
  tooltipData,
  selection,
@@ -230,10 +243,10 @@ export function Line({
  </g>
 
  {/* Highlight segment on hover */}
- {showHighlight && isHovering && isLoaded && pathRef.current && (
+ {showHighlight && isHovering && isLoaded && pathD && (
  <motion.path
  animate={{ opacity: 1 }}
- d={pathRef.current.getAttribute("d") || ""}
+ d={pathD}
  exit={{ opacity: 0 }}
  fill="none"
  initial={{ opacity: 0 }}

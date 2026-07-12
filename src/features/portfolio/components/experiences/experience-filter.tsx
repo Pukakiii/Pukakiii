@@ -4,8 +4,8 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useState,
+  useSyncExternalStore,
 } from "react"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -30,6 +30,19 @@ const ExperienceFilterContext = createContext<{
   activeTab: ExperienceTab
   showAll: boolean
 }>({ activeTab: "all", showAll: false })
+
+// The active tab is derived from the URL (?tab=). `pushState` doesn't emit a
+// popstate event, so `selectTab` dispatches this one to notify the store.
+const TAB_CHANGE_EVENT = "experience-tab-change"
+
+function subscribeToTab(callback: () => void) {
+  window.addEventListener("popstate", callback)
+  window.addEventListener(TAB_CHANGE_EVENT, callback)
+  return () => {
+    window.removeEventListener("popstate", callback)
+    window.removeEventListener(TAB_CHANGE_EVENT, callback)
+  }
+}
 
 function readTabFromLocation(
   categories: ExperiencePositionCategory[]
@@ -62,17 +75,14 @@ export function ExperienceFilter({
   hasOverflow: boolean
   children: React.ReactNode
 }) {
-  const [activeTab, setActiveTab] = useState<ExperienceTab>("all")
+  // Subscribe to the URL as the source of truth; renders "all" on the server
+  // and during hydration, then settles to the real tab on the client.
+  const activeTab = useSyncExternalStore(
+    subscribeToTab,
+    () => readTabFromLocation(categories),
+    () => "all" as ExperienceTab
+  )
   const [showAll, setShowAll] = useState(false)
-
-  useEffect(() => {
-    setActiveTab(readTabFromLocation(categories))
-
-    const handlePopState = () => setActiveTab(readTabFromLocation(categories))
-    window.addEventListener("popstate", handlePopState)
-    return () => window.removeEventListener("popstate", handlePopState)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const selectTab = useCallback(
     (tab: ExperienceTab) => {
@@ -88,7 +98,7 @@ export function ExperienceFilter({
           ? window.location.pathname
           : `${window.location.pathname}?tab=${tab}`
       )
-      setActiveTab(tab)
+      window.dispatchEvent(new Event(TAB_CHANGE_EVENT))
       requestAnimationFrame(() => scrollToFirstMatch(tab))
     },
     [activeTab]
@@ -203,11 +213,15 @@ export function ExperiencePositionCollapsible({
   children: React.ReactNode
 }) {
   const { activeTab } = useContext(ExperienceFilterContext)
-  const [userOpen, setUserOpen] = useState<boolean | null>(null)
 
-  useEffect(() => {
+  // Reset the manual open/closed override whenever the active tab changes
+  // (adjusting state during render, React's recommended pattern).
+  const [userOpen, setUserOpen] = useState<boolean | null>(null)
+  const [prevTab, setPrevTab] = useState(activeTab)
+  if (prevTab !== activeTab) {
+    setPrevTab(activeTab)
     setUserOpen(null)
-  }, [activeTab])
+  }
 
   const filtering = activeTab !== "all"
   const emphasized = filtering && category === activeTab
