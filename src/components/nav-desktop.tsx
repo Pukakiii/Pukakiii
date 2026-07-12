@@ -108,7 +108,9 @@ export function NavDesktop({
         More
         <ChevronDownIcon
           className={cn(
-            "size-4 text-muted-foreground transition-transform duration-300 ease-out group-hover:text-foreground group-data-[state=open]:text-foreground motion-reduce:transition-none",
+            // Rotation is synced to the row-slide easing/duration (see
+            // nav-swap-track) so the arrow and the rows move as one.
+            "size-4 text-muted-foreground transition-transform duration-[380ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:text-foreground group-data-[state=open]:text-foreground motion-reduce:transition-none",
             open && "-rotate-180"
           )}
           aria-hidden

@@ -140,7 +140,9 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
         <span
           className={cn(
             "flex size-8 items-center justify-center rounded-lg text-muted-foreground",
-            "transition-[color,background-color,transform] duration-300 ease-out hover:text-foreground",
+            // Rotation is synced to the row-slide easing/duration so the arrow
+            // turns in lockstep with the sliding icons.
+            "transition-[color,background-color,transform] duration-[380ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:text-foreground",
             "group-data-[state=open]:bg-accent group-data-[state=open]:text-foreground group-data-[state=open]:rotate-180",
             "motion-reduce:transition-none motion-reduce:group-data-[state=open]:rotate-0",
             "[&_svg]:size-4.5"
