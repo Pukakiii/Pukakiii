@@ -1,14 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   BarChart3Icon,
   BriefcaseBusinessIcon,
+  ChevronRightIcon,
   FolderGit2Icon,
-  GalleryHorizontalEndIcon,
   GraduationCapIcon,
   HouseIcon,
   MailIcon,
@@ -67,10 +67,24 @@ function NavIconLink({
 
 export function NavMobile({ items }: { items: NavItem<Route>[] }) {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
 
   const quickLinks = items.filter(({ href }) => href in QUICK_LINK_ICONS)
   const moreLinks = items.filter(({ href }) => href in MORE_LINK_ICONS)
+
+  const isAnyMoreActive = moreLinks.some(({ href }) =>
+    pathname?.startsWith(href)
+  )
+
+  // Settle the visible row to whichever section the current page belongs to,
+  // so tapping a link from the secondary row keeps that row on screen.
+  // State is adjusted during render (React's recommended pattern) to re-settle
+  // whenever navigation crosses between the primary and secondary sections.
+  const [open, setOpen] = useState(isAnyMoreActive)
+  const [prevMoreActive, setPrevMoreActive] = useState(isAnyMoreActive)
+  if (prevMoreActive !== isAnyMoreActive) {
+    setPrevMoreActive(isAnyMoreActive)
+    setOpen(isAnyMoreActive)
+  }
 
   const renderLinks = (links: NavItem<Route>[], icons: Record<string, React.ReactNode>) =>
     links.map(({ title, href }) => {
@@ -91,10 +105,6 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
       )
     })
 
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname])
-
   if (moreLinks.length === 0) {
     return (
       <nav className="flex items-center gap-1" aria-label="Main">
@@ -114,10 +124,12 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
         />
       </nav>
 
+      <span className="mx-0.5 h-5 w-px shrink-0 bg-border" aria-hidden />
+
       <button
         type="button"
         aria-expanded={open}
-        aria-label="More pages"
+        aria-label={open ? "Show main pages" : "Show more pages"}
         data-state={open ? "open" : "closed"}
         className="group shrink-0 touch-manipulation outline-none focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-ring/50"
         onClick={() => {
@@ -128,13 +140,13 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
         <span
           className={cn(
             "flex size-8 items-center justify-center rounded-lg text-muted-foreground",
-            "transition-[color,background-color,transform] duration-300 hover:text-foreground",
-            "group-data-[state=open]:bg-accent group-data-[state=open]:text-foreground group-data-[state=open]:rotate-90",
-            "motion-reduce:group-data-[state=open]:rotate-0",
+            "transition-[color,background-color,transform] duration-300 ease-out hover:text-foreground",
+            "group-data-[state=open]:bg-accent group-data-[state=open]:text-foreground group-data-[state=open]:rotate-180",
+            "motion-reduce:transition-none motion-reduce:group-data-[state=open]:rotate-0",
             "[&_svg]:size-4.5"
           )}
         >
-          <GalleryHorizontalEndIcon aria-hidden />
+          <ChevronRightIcon aria-hidden />
         </span>
       </button>
     </div>

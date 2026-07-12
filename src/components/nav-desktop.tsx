@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import type { Route } from "next"
 import { usePathname } from "next/navigation"
 import { ChevronDownIcon } from "lucide-react"
@@ -49,17 +49,24 @@ export function NavDesktop({
   moreItems?: NavItem<Route>[]
 }) {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
 
   const hasMore = Boolean(moreItems && moreItems.length > 0)
 
-  const isAnyMoreActive = moreItems?.some((item) =>
-    pathname?.startsWith(item.href)
+  const isAnyMoreActive = Boolean(
+    moreItems?.some((item) => pathname?.startsWith(item.href))
   )
 
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname])
+  // The visible row settles to the section the current page belongs to, so
+  // opening a link from the secondary row keeps that row on screen instead
+  // of snapping back to the primary one. The toggle still flips between them.
+  // Adjusting state during render (React's recommended pattern) re-settles the
+  // row whenever navigation moves between the primary and secondary sections.
+  const [open, setOpen] = useState(isAnyMoreActive)
+  const [prevMoreActive, setPrevMoreActive] = useState(isAnyMoreActive)
+  if (prevMoreActive !== isAnyMoreActive) {
+    setPrevMoreActive(isAnyMoreActive)
+    setOpen(isAnyMoreActive)
+  }
 
   if (!hasMore) {
     return (
@@ -86,29 +93,26 @@ export function NavDesktop({
       <button
         type="button"
         aria-expanded={open}
-        aria-label="More"
+        aria-label={open ? "Show main menu" : "Show more pages"}
         data-state={open ? "open" : "closed"}
-        className="group shrink-0 touch-manipulation outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-ring/50"
+        className={cn(
+          "group flex shrink-0 touch-manipulation items-center gap-1 text-sm font-medium tracking-wide outline-none transition-colors",
+          "text-muted-foreground hover:text-foreground data-[state=open]:text-foreground focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-ring/50",
+          isAnyMoreActive && "text-foreground"
+        )}
         onClick={() => {
           haptic()
           setOpen((prev) => !prev)
         }}
       >
-        <span
+        More
+        <ChevronDownIcon
           className={cn(
-            "flex items-center gap-1 text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground group-data-[state=open]:text-foreground",
-            isAnyMoreActive && !open && "text-foreground"
+            "size-4 text-muted-foreground transition-transform duration-300 ease-out group-hover:text-foreground group-data-[state=open]:text-foreground motion-reduce:transition-none",
+            open && "-rotate-180"
           )}
-        >
-          More
-          <ChevronDownIcon
-            className={cn(
-              "size-3.5 transition-transform duration-300 motion-reduce:transition-none",
-              open && "rotate-180"
-            )}
-            aria-hidden
-          />
-        </span>
+          aria-hidden
+        />
       </button>
     </div>
   )
