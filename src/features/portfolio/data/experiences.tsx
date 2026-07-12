@@ -21,7 +21,7 @@ export const EXPERIENCES: Experience[] = [
         id: "flowtly-frontend",
         title: "Frontend Engineer",
         category: "developer",
-        employmentPeriod: { start: "06.2025" },
+        employmentPeriod: { start: "06.2025", end: "07.2026" },
         employmentType: "Full-time",
         icon: <CodeXmlIcon />,
         isExpanded: true,

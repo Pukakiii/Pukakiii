@@ -3,6 +3,7 @@ import { decodeEmail, decodePhoneNumber } from "@/utils/string"
 import sharp from "sharp"
 import VCard from "vcard-creator"
 
+import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
 
 export const revalidate = false
@@ -14,19 +15,16 @@ export async function GET() {
 
  card
  .addName(USER.lastName, USER.firstName)
- .addPhoneNumber(decodePhoneNumber(USER.phoneNumberB64))
  .addAddress(USER.address)
+ .addPhoneNumber(decodePhoneNumber(USER.phoneNumberB64))
  .addEmail(decodeEmail(USER.emailB64))
+ .addJobtitle(USER.jobTitle)
  .addURL(USER.website)
+ .addURL(SOCIAL.linkedin.href)
 
  const photo = await getVCardPhoto(USER.avatar)
  if (photo) {
  card.addPhoto(photo.image, photo.mime)
- }
-
- if (USER.jobs.length > 0) {
- const company = USER.jobs[0]
- card.addCompany(company.company).addJobtitle(company.title)
  }
 
  return new NextResponse(card.toString(), {

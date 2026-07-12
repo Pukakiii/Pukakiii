@@ -9,7 +9,6 @@ const eventSchema = z.object({
  "copy_block_code",
  "copy_email",
  "copy_phone_number",
- "play_name_pronunciation",
  "open_command_menu",
  "command_menu_search",
  "command_menu_action",

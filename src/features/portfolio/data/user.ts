@@ -6,7 +6,6 @@ export const USER: User = {
  displayName: "Igor Pukalski",
  username: "pukakiii",
  gender: "male",
- pronouns: "he/him",
  bio: "Fullstack developer and Computer Science student building web apps, AI-assisted workflows, and practical tools with TypeScript, React, Next.js, and Python.",
  flipSentences: [
  "Fullstack developer.",
@@ -16,7 +15,7 @@ export const USER: User = {
  ],
  address: "Warsaw, Poland",
  phoneNumberB64: "KzQ4Nzg5MTkxNjQ0",
- emailB64: "cHVrYWtpLmlwQGdtYWlsLmNvbQ==",
+ emailB64: "cGtraS5pcC53b3JrQGdtYWlsLmNvbQ==",
  website: "https://github.com/Pukakiii",
  jobTitle: "Fullstack Developer",
  jobs: [
@@ -48,7 +47,6 @@ I use AI tooling heavily and deliberately — Claude and Cursor at high proficie
  darkOn: "/images/brand/pkki-logo.png",
  },
  ogImage: "/images/brand/og-pkki.png",
- namePronunciationUrl: "",
  timeZone: "Europe/Warsaw",
  keywords: [
  "igor pukalski",

@@ -8,8 +8,6 @@ export type User = {
  /** Handle/username used in links or mentions */
  username: string
  gender: "male" | "female" | "non-binary"
- /** e.g. "he/him", "she/her", "they/them" */
- pronouns: string
  bio: string
  /** Short phrases rotated in UI (e.g., homepage flip effect) */
  flipSentences: string[]
@@ -38,8 +36,6 @@ export type User = {
  avatarVariants: AvatarLightsVariants
  /** Open Graph image URL for social sharing */
  ogImage: string
- /** Audio URL for name pronunciation */
- namePronunciationUrl: string
  /** SEO keywords list for metadata */
  keywords: string[]
  /** Time zone in IANA format (e.g., "Asia/Ho_Chi_Minh") */

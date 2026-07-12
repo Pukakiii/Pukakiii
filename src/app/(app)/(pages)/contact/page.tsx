@@ -17,7 +17,7 @@ import { SocialLinks } from "@/features/portfolio/components/social-links"
 
 const title = "Contact"
 const description =
- "Get in touch — email, phone, socials, or grab my vCard and CV."
+ "Get in touch — email, LinkedIn, socials, or grab my contact card and CV."
 
 export const metadata: Metadata = {
  title,
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 const DOWNLOAD_LINKS = [
  {
  href: "/vcard",
- title: "Download vCard",
- description: "Add me to your contacts",
+ title: "vCard / Contact",
+ description: "Save my details to your contacts app",
  icon: <DownloadIcon />,
  },
  {
