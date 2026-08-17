@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache"
 
 import { SOURCE_CODE_GITHUB_REPO } from "@/config/site"
+import { getGitHubApiHeaders } from "@/lib/github"
 import { GitHubStars } from "@/components/github-stars"
 
 const getStargazerCount = unstable_cache(
@@ -9,11 +10,7 @@ const getStargazerCount = unstable_cache(
  const response = await fetch(
  `https://api.github.com/repos/${SOURCE_CODE_GITHUB_REPO}`,
  {
- headers: {
- Accept: "application/vnd.github+json",
- Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
- "X-GitHub-Api-Version": "2022-11-28",
- },
+ headers: getGitHubApiHeaders(process.env.GITHUB_API_TOKEN),
  }
  )
 

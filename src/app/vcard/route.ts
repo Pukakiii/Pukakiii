@@ -1,3 +1,6 @@
+import fs from "node:fs/promises"
+import path from "node:path"
+
 import { NextResponse } from "next/server"
 import { decodeEmail, decodePhoneNumber } from "@/utils/string"
 import sharp from "sharp"
@@ -38,6 +41,22 @@ export async function GET() {
 
 async function getVCardPhoto(url: string) {
  try {
+ if (url.startsWith("/")) {
+ const publicDir = path.resolve(process.cwd(), "public")
+ const filePath = path.resolve(publicDir, url.replace(/^\/+/, ""))
+
+ if (!filePath.startsWith(`${publicDir}${path.sep}`)) {
+ return null
+ }
+
+ const buffer = await fs.readFile(filePath)
+ if (buffer.length === 0) {
+ return null
+ }
+
+ return toVCardPhoto(buffer)
+ }
+
  const res = await fetch(url)
 
  if (!res.ok) {
@@ -54,15 +73,18 @@ async function getVCardPhoto(url: string) {
  return null
  }
 
- const jpegBuffer = await convertImageToJpeg(buffer)
- const image = jpegBuffer.toString("base64")
-
- return {
- image,
- mime: "jpeg",
- }
+ return toVCardPhoto(buffer)
  } catch {
  return null
+ }
+}
+
+async function toVCardPhoto(buffer: Buffer) {
+ const jpegBuffer = await convertImageToJpeg(buffer)
+
+ return {
+ image: jpegBuffer.toString("base64"),
+ mime: "jpeg",
  }
 }
 
