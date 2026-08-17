@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { format } from "date-fns"
-import { ArrowUpRightIcon, CircleCheckBigIcon } from "lucide-react"
+import { ArrowUpRightIcon, AwardIcon, CircleCheckBigIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
@@ -66,7 +66,12 @@ export function CertificationItem({
  >
  {(certification.issuerIconName
  ? ISSUER_ICONS[certification.issuerIconName]
- : null) ?? <CircleCheckBigIcon />}
+ : null) ??
+ (certification.kind === "award" ? (
+ <AwardIcon />
+ ) : (
+ <CircleCheckBigIcon />
+ ))}
  </div>
  )}
 
@@ -112,6 +117,21 @@ export function CertificationItem({
  {format(new Date(certification.issueDate), "MM.yyyy")}
  </time>
  </dd>
+ </div>
+ </>
+ )}
+
+ {certification.credentialID && (
+ <>
+ <Separator
+ className="data-vertical:h-4 data-vertical:self-center"
+ orientation="vertical"
+ aria-hidden
+ />
+
+ <div>
+ <dt className="sr-only">Credential ID</dt>
+ <dd className="font-mono text-xs">{certification.credentialID}</dd>
  </div>
  </>
  )}

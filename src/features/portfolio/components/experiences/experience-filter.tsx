@@ -19,6 +19,7 @@ export type ExperienceTab = ExperiencePositionCategory | "all"
 const TAB_LABELS: Record<ExperienceTab, string> = {
   all: "All",
   developer: "Developer",
+  coaching: "Coaching",
   marketing: "Marketing",
   creative: "Creative",
   operations: "Operations",

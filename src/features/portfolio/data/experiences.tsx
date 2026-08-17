@@ -4,7 +4,9 @@ import {
   CameraIcon,
   CodeXmlIcon,
   MegaphoneIcon,
+  ShieldCheckIcon,
   UsersIcon,
+  VolleyballIcon,
 } from "lucide-react"
 
 export const EXPERIENCES: Experience[] = [
@@ -15,7 +17,6 @@ export const EXPERIENCES: Experience[] = [
     companyWebsite: "https://flowtly.com",
     location: "Warsaw, Poland",
     locationType: "Remote",
-    isCurrentEmployer: true,
     positions: [
       {
         id: "flowtly-frontend",
@@ -83,6 +84,68 @@ export const EXPERIENCES: Experience[] = [
           "UI/UX",
           "QA",
           "Documentation",
+        ],
+      },
+    ],
+  },
+  {
+    id: "private-football-coach",
+    companyName: "Private Clients",
+    companyIcon: <VolleyballIcon />,
+    location: "Warsaw, Poland",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "private-football-coach",
+        title: "Private Football Coach",
+        category: "coaching",
+        employmentPeriod: { start: "2024" },
+        employmentType: "Paid freelance",
+        icon: <VolleyballIcon />,
+        isExpanded: true,
+        description: `Provide occasional paid, one-to-one football coaching for players across age groups and ability levels. I have worked with **20+ individual players**, primarily through referrals and personal recommendations.
+
+- Deliver personalized technical work covering ball mastery, first touch, close control, dribbling, changes of direction, passing, directional control, finishing, and weaker-foot development.
+- Develop coordination, speed, agility, balance, decision-making, positional awareness, and preparation for match situations.
+- Demonstrate techniques, break movements into understandable steps, provide immediate feedback, and progressively increase exercise difficulty.
+- Help players improve their weaker foot, ball control, dribbling, and shooting accuracy through focused individual practice.`,
+        skills: [
+          "Individual player development",
+          "Session planning",
+          "Technical coaching",
+          "Player assessment",
+          "Youth development",
+        ],
+      },
+    ],
+  },
+  {
+    id: "shakhtar-academy-warsaw",
+    companyName: "Shakhtar Academy Warsaw",
+    companyIcon: <ShieldCheckIcon />,
+    location: "Bemowo, Warsaw, Poland",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "shakhtar-youth-coach-intern",
+        title: "Youth Football Coach Intern",
+        category: "coaching",
+        employmentPeriod: { start: "07.2026", end: "08.2026" },
+        employmentType: "Internship",
+        icon: <UsersIcon />,
+        isExpanded: true,
+        description: `Independently planned and led football training for groups of **8–12 children born in 2020–2021** (approximately ages 5–6).
+
+- Designed complete, age-appropriate sessions combining warm-ups, movement activities, technical exercises, and small-sided games.
+- Coached ball familiarity, close control, dribbling, changes of direction, first touch, passing, shooting, coordination, balance, speed, and agility.
+- Demonstrated exercises in child-friendly language, adjusted difficulty to individual ability, and kept every child active and engaged.
+- Prepared training plans, the playing area, balls, cones, and other equipment independently while maintaining discipline and player safety.`,
+        skills: [
+          "Youth coaching",
+          "Session planning",
+          "Group leadership",
+          "Player safety",
+          "Technical development",
         ],
       },
     ],

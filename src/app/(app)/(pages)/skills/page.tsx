@@ -11,7 +11,7 @@ import { TechStack } from "@/features/portfolio/components/tech-stack"
 
 const title = "Skills"
 const description =
- "The stack I work with — frontend, backend, design, DevOps, and AI tooling — plus certifications."
+ "The stack I work with — frontend, backend, design, DevOps, and AI tooling — plus certifications and awards."
 
 export const metadata: Metadata = {
  title,

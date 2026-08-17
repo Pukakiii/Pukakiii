@@ -20,7 +20,7 @@ Personal portfolio of Igor Pukalski (Pukakiii) — fullstack developer based in 
 | `/about` | Bio and background |
 | `/experience` | Work history |
 | `/projects` | Open-source and personal projects |
-| `/skills` | Tech stack and certifications |
+| `/skills` | Tech stack, certifications, and awards |
 | `/education` | Studies |
 | `/blog` | MDX posts (+ `/rss.xml`) |
 | `/analytics` | Site insights and GitHub contribution graph |

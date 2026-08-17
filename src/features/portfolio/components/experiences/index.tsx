@@ -15,6 +15,7 @@ const MAX = 3
 
 const CATEGORY_ORDER: ExperiencePositionCategory[] = [
   "developer",
+  "coaching",
   "marketing",
   "creative",
   "operations",

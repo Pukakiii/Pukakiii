@@ -1,6 +1,7 @@
 /** Career track a position belongs to; drives the /experience tab filter. */
 export type ExperiencePositionCategory =
   | "developer"
+  | "coaching"
   | "marketing"
   | "creative"
   | "operations"
@@ -43,6 +44,4 @@ export type Experience = {
  locationType?: "On-site" | "Hybrid" | "Remote"
  /** Roles held at this company; keep newest first for display. */
  positions: ExperiencePosition[]
- /** Marks the company as the current employer for highlighting. */
- isCurrentEmployer?: boolean
 }

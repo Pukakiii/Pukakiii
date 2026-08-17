@@ -2,6 +2,44 @@ import type { Certification } from "../types/certifications"
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    title: "Introduction to the UEFA C Coaching Course",
+    issuer: "Polish Football Association (PZPN)",
+    issueDate: "2026-08-16",
+    credentialID: "uqGpantHyD",
+    credentialURL: "",
+  },
+  {
+    title: "Child Safety in Football",
+    issuer: "Polish Football Association (PZPN)",
+    issueDate: "2026-08-15",
+    credentialID: "y1ThpeQran",
+    credentialURL: "",
+  },
+  {
+    title: "Football Animator",
+    issuer: "Polish Football Association (PZPN)",
+    issueDate: "2026-08-15",
+    credentialID: "UzbMB8Z3fd",
+    credentialURL: "",
+  },
+  {
+    title: "Photoshop with AI: From Image Editing to Creative Composition",
+    issuer: "Społeczna Akademia Nauk",
+    issuerLogoURL: "/images/logos/issuers/san.png",
+    issueDate: "2026-07-01",
+    credentialID: "",
+    credentialURL: "",
+  },
+  {
+    title:
+      "Skin Expert Starter Pack: Skin Diagnostics and Modern Care with Technology",
+    issuer: "Społeczna Akademia Nauk (with Atelier Piękna)",
+    issuerLogoURL: "/images/logos/issuers/san.png",
+    issueDate: "2026-07-01",
+    credentialID: "",
+    credentialURL: "",
+  },
+  {
     title: "Influencer Marketing",
     issuer: "Społeczna Akademia Nauk (with indaHash)",
     issuerLogoURL: "/images/logos/issuers/san.png",
@@ -18,19 +56,20 @@ export const CERTIFICATIONS: Certification[] = [
     credentialURL: "",
   },
   {
-    title: "Photoshop with AI: From Image Editing to Creative Composition",
+    kind: "award",
+    title: "9th Place — #MłodyInformatyk Competition",
     issuer: "Społeczna Akademia Nauk",
     issuerLogoURL: "/images/logos/issuers/san.png",
-    issueDate: "2026-07-01",
+    issueDate: "2026-03-01",
     credentialID: "",
     credentialURL: "",
   },
   {
-    title: "Skin Expert Starter Pack: Skin Diagnostics and Modern Care with Technology",
-    issuer: "Społeczna Akademia Nauk (with Atelier Piękna)",
-    issuerLogoURL: "/images/logos/issuers/san.png",
-    issueDate: "2026-07-01",
-    credentialID: "",
+    title: "Web Services & Mobile Application Programming",
+    issuer: "Instytut Badawczo-Szkoleniowy",
+    issuerLogoURL: "/images/logos/ibs.svg",
+    issueDate: "2023-05-01",
+    credentialID: "IBS/12/349/2023",
     credentialURL: "",
   },
   {
@@ -47,14 +86,6 @@ export const CERTIFICATIONS: Certification[] = [
     issuerLogoURL: "/images/logos/issuers/codecademy.png",
     issueDate: "",
     credentialID: "",
-    credentialURL: "",
-  },
-  {
-    title: "Web Services & Mobile Application Programming",
-    issuer: "Instytut Badawczo-Szkoleniowy",
-    issuerLogoURL: "/images/logos/ibs.svg",
-    issueDate: "2023-05-01",
-    credentialID: "IBS/12/349/2023",
     credentialURL: "",
   },
   {

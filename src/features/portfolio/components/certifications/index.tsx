@@ -17,7 +17,7 @@ export function Certifications() {
  <Panel id={ID}>
  <PanelHeader>
  <PanelTitle>
- <a href={`#${ID}`}>Certifications</a>
+ <a href={`#${ID}`}>Certifications &amp; Awards</a>
  <PanelTitleSup>({CERTIFICATIONS.length})</PanelTitleSup>
  <PanelTitleCopy id={ID} />
  </PanelTitle>

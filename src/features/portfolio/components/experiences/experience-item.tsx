@@ -7,6 +7,10 @@ import type { Experience } from "../../types/experiences"
 import { ExperiencePositionItem } from "./experience-position-item"
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
+ const isCurrent = experience.positions.some(
+ (position) => !position.employmentPeriod.end
+ )
+
  return (
  <div
  id={`experience-${experience.id}`}
@@ -56,7 +60,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
  <dt className="sr-only">Location type</dt>
  <dd>({experience.locationType})</dd>
 
- {experience.isCurrentEmployer && (
+ {isCurrent && (
  <>
  <dt className="sr-only">Employment status</dt>
  <dd>

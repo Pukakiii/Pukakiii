@@ -1,4 +1,6 @@
 export type Certification = {
+ /** Distinguishes course credentials from competitive awards. */
+ kind?: "certification" | "award"
  title: string
  issuer: string
  /**
@@ -12,7 +14,7 @@ export type Certification = {
  */
  issuerIconName?: string
  /**
- * Issue date in ISO format (YYYY-MM-DD). Parsed and formatted in the UI via Day.js.
+ * Issue date in ISO format (YYYY-MM-DD). Parsed and formatted in the UI.
  */
  issueDate: string
  /**
