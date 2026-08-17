@@ -2,17 +2,22 @@ import type { Education } from "@/features/portfolio/types/education"
 
 export const EDUCATION: Education[] = [
   {
-    id: "bsc-cs",
+    id: "bsc-ai-cognitive-science",
     school: "University of Warsaw",
     logo: "/images/logos/education/uw.png",
     degree: "BSc",
-    fieldOfStudy: "Computer Science",
+    fieldOfStudy: "Artificial Intelligence and Cognitive Science",
     period: {
       start: "2026",
     },
     description:
-      "Undergraduate Computer Science studies at a top Polish university in Warsaw, building on a strong foundation in mathematics and programming.",
-    skills: ["Computer Science", "Mathematics", "Algorithms"],
+      "Undergraduate studies in Artificial Intelligence and Cognitive Science (AI and Cognitivistics) at the University of Warsaw, combining computer science, mathematics, AI, and the study of cognition.",
+    skills: [
+      "Artificial Intelligence",
+      "Cognitive Science",
+      "Computer Science",
+      "Mathematics",
+    ],
     isExpanded: true,
   },
   {

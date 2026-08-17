@@ -109,7 +109,7 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
  icon: <GraduationCapIcon />,
  },
  {
- title: "Certifications",
+ title: "Certifications & Awards",
  href: "/skills#certs",
  kind: "page",
  icon: <CircleCheckBigIcon />,

@@ -10,7 +10,7 @@ import { Education } from "@/features/portfolio/components/education"
 
 const title = "Education"
 const description =
- "Computer Science studies in Warsaw, on a foundation of mathematics and marketing & advertising."
+ "Artificial Intelligence and Cognitive Science studies at the University of Warsaw, on a foundation of mathematics, programming, and creative production."
 
 export const metadata: Metadata = {
  title,

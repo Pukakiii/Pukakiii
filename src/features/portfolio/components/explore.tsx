@@ -40,7 +40,7 @@ const EXPLORE_LINKS = [
  {
  href: "/skills",
  title: "Skills",
- description: "Stack and certifications",
+ description: "Stack, certifications, and awards",
  icon: <LayersIcon />,
  },
  {
