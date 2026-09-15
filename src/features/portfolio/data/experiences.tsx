@@ -196,7 +196,9 @@ export const EXPERIENCES: Experience[] = [
         id: "skala-stryi-camp-assistant",
         title: "Youth Football Camp Coaching Assistant",
         category: "coaching",
-        employmentPeriod: { start: "2020" },
+        // A two-week summer camp. Month precision on both ends keeps it a
+        // closed one-month period; a bare year would read as still ongoing.
+        employmentPeriod: { start: "07.2020", end: "07.2020" },
         employmentType: "Informal coaching support",
         icon: <UsersIcon />,
         description: `At age 15, supported the club's lead coaches during a two-week summer camp while attending as the oldest academy player, helping train players **2–4 years younger** (around ages 11–13).
