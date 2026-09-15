@@ -12,6 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
+    CondPageBreak,
     KeepTogether,
     Paragraph,
     SimpleDocTemplate,
@@ -29,51 +30,75 @@ FONT_DIR = ROOT / "src" / "assets" / "fonts"
 pdfmetrics.registerFont(TTFont("Geist", FONT_DIR / "Geist-Medium.ttf"))
 pdfmetrics.registerFont(TTFont("GeistSemiBold", FONT_DIR / "Geist-SemiBold.ttf"))
 pdfmetrics.registerFont(TTFont("GeistMono", FONT_DIR / "GeistMono-Regular.ttf"))
+pdfmetrics.registerFont(TTFont("GeistMonoMedium", FONT_DIR / "GeistMono-Medium.ttf"))
+pdfmetrics.registerFont(TTFont("GeistMonoSemiBold", FONT_DIR / "GeistMono-SemiBold.ttf"))
+# Subset carrying only P, K and I — just enough for the PKKI wordmark.
+pdfmetrics.registerFont(TTFont("Silkscreen", FONT_DIR / "Silkscreen-Bold-subset.ttf"))
 
-INK = HexColor("#18181B")
-MUTED = HexColor("#5F6068")
-LINE = HexColor("#D9D9DE")
+# Palette sampled from the pkki letterhead; see /Users/pukaki/Documents/pkki_template.
+PAPER = HexColor("#FAF9F6")
+INK = HexColor("#111110")
+MUTED = HexColor("#A3A39E")
+LINE = MUTED
+
+# Letterhead geometry, read out of pkki_template.pdf (A4, 595.28 x 842 pt).
+RULE_LEFT = 33.36
+RULE_RIGHT = 561.86
+RULE_TOP = 808.64
+RULE_BOTTOM = 33.51
+RULE_WIDTH = 0.75
+MARGIN = 46.5           # content inset; aligns with the wordmark's left edge
+WORDMARK_BASELINE = 815.0
+WORDMARK_SIZE = 28.5
+WORDMARK_TRACKING = 27.2
+FOOTER_URL = "https://pukaki.vercel.app"
 
 
 def styles():
     return {
         "name": ParagraphStyle(
-            "Name", fontName="GeistSemiBold", fontSize=24, leading=27, textColor=INK
+            "Name",
+            fontName="GeistMonoSemiBold",
+            fontSize=17,
+            leading=21,
+            textColor=INK,
+            charSpace=1.6,
         ),
         "contact": ParagraphStyle(
-            "Contact", fontName="GeistMono", fontSize=7.8, leading=11, textColor=MUTED
+            "Contact", fontName="GeistMono", fontSize=7.2, leading=10.5, textColor=MUTED
         ),
         "section": ParagraphStyle(
             "Section",
-            fontName="GeistSemiBold",
-            fontSize=10.5,
-            leading=13,
+            fontName="GeistMonoSemiBold",
+            fontSize=8.8,
+            leading=12,
             textColor=INK,
-            spaceBefore=9,
-            spaceAfter=5,
+            charSpace=1.8,
+            spaceBefore=8,
+            spaceAfter=4,
         ),
         "role": ParagraphStyle(
-            "Role", fontName="GeistSemiBold", fontSize=9.5, leading=12, textColor=INK
+            "Role", fontName="GeistMonoSemiBold", fontSize=8.4, leading=11.5, textColor=INK
         ),
         "meta": ParagraphStyle(
-            "Meta", fontName="GeistMono", fontSize=7.6, leading=10, textColor=MUTED
+            "Meta", fontName="GeistMono", fontSize=7, leading=10, textColor=MUTED
         ),
         "body": ParagraphStyle(
-            "Body", fontName="Geist", fontSize=8.4, leading=11.5, textColor=INK
+            "Body", fontName="GeistMono", fontSize=7.6, leading=11.2, textColor=INK
         ),
         "bullet": ParagraphStyle(
             "Bullet",
-            fontName="Geist",
-            fontSize=8.2,
-            leading=11.2,
+            fontName="GeistMono",
+            fontSize=7.4,
+            leading=10.8,
             leftIndent=9,
             firstLineIndent=-6,
             bulletIndent=0,
             textColor=INK,
-            spaceAfter=1.5,
+            spaceAfter=1.6,
         ),
         "small": ParagraphStyle(
-            "Small", fontName="Geist", fontSize=7.4, leading=10, textColor=MUTED
+            "Small", fontName="GeistMono", fontSize=7, leading=10, textColor=MUTED
         ),
     }
 
@@ -83,10 +108,12 @@ S = styles()
 
 def section(title):
     return [
+        # Never leave a heading stranded with nothing under it.
+        CondPageBreak(32 * mm),
         Spacer(1, 2 * mm),
         Table(
             [[Paragraph(title.upper(), S["section"]), ""]],
-            colWidths=[75 * mm, 95 * mm],
+            colWidths=[80 * mm, 97 * mm],
             hAlign="LEFT",
             style=TableStyle(
                 [
@@ -106,7 +133,7 @@ def role(title, organization, period, location, bullets):
             [Paragraph(title, S["role"]), Paragraph(period, S["meta"])],
             [Paragraph(organization, S["body"]), Paragraph(location, S["meta"])],
         ],
-        colWidths=[128 * mm, 42 * mm],
+        colWidths=[132 * mm, 45 * mm],
         style=TableStyle(
             [
                 ("ALIGN", (1, 0), (1, -1), "RIGHT"),
@@ -122,15 +149,32 @@ def role(title, organization, period, location, bullets):
     return KeepTogether(content)
 
 
-def page_number(canvas, doc):
+def page_furniture(canvas, doc):
+    """Paint the pkki letterhead: paper, frame rules, wordmark, footer URL."""
     canvas.saveState()
-    canvas.setStrokeColor(LINE)
-    canvas.setLineWidth(0.5)
-    canvas.line(18 * mm, 13 * mm, 192 * mm, 13 * mm)
-    canvas.setFont("GeistMono", 7)
+
+    canvas.setFillColor(PAPER)
+    canvas.rect(0, 0, A4[0], A4[1], stroke=0, fill=1)
+
+    canvas.setStrokeColor(MUTED)
+    canvas.setLineWidth(RULE_WIDTH)
+    canvas.line(0, RULE_TOP, A4[0], RULE_TOP)
+    canvas.line(0, RULE_BOTTOM, A4[0], RULE_BOTTOM)
+    canvas.line(RULE_LEFT, 0, RULE_LEFT, A4[1])
+    canvas.line(RULE_RIGHT, 0, RULE_RIGHT, A4[1])
+
     canvas.setFillColor(MUTED)
-    canvas.drawString(18 * mm, 8.5 * mm, "IGOR PUKALSKI")
-    canvas.drawRightString(192 * mm, 8.5 * mm, f"PAGE {doc.page}")
+    canvas.setFont("Silkscreen", WORDMARK_SIZE)
+    x = MARGIN
+    for letter in "PKKI":
+        canvas.drawString(x, WORDMARK_BASELINE, letter)
+        x += WORDMARK_TRACKING
+
+    canvas.setFont("GeistMono", 7.4)
+    canvas.drawCentredString(A4[0] / 2, 15.5, FOOTER_URL)
+    if doc.page > 1:
+        canvas.drawRightString(RULE_RIGHT - 13, 15.5, str(doc.page))
+
     canvas.restoreState()
 
 
@@ -139,7 +183,7 @@ def build_story():
         Paragraph("IGOR PUKALSKI", S["name"]),
         Spacer(1, 2.5 * mm),
         Paragraph(
-            "+48 789 191 644  ·  pukaki.ip@gmail.com  ·  Warsaw, Poland  ·  "
+            "+48 789 191 644  ·  pkki.ip.work@gmail.com  ·  Warsaw, Poland  ·  "
             "github.com/Pukakiii  ·  linkedin.com/in/00me",
             S["contact"],
         ),
@@ -152,7 +196,8 @@ def build_story():
             "and Cognitive Science. Leads a four-developer team building JobAgent across "
             "architecture, frontend, backend, UI/UX, QA, and documentation. Former production "
             "frontend engineer at Flowtly, with an earlier background in creative production. "
-            "Also provides private football coaching and has worked with 20+ players.",
+            "Also coaches youth football in Warsaw, currently running the 2016–2017 age "
+            "groups, alongside 20+ individual players.",
             S["body"],
         )
     )
@@ -167,6 +212,16 @@ def build_story():
             [
                 "Lead a four-developer team and own technical direction, architecture, and cross-functional delivery.",
                 "Ship frontend, backend integration, authentication, state management, responsive UI, accessibility, testing, and documentation.",
+            ],
+        ),
+        role(
+            "Youth Football Coach",
+            "Lider Wilanów · Part-time",
+            "Sep 2026 – Present",
+            "Wilanów, Warsaw, Poland",
+            [
+                "Coach groups of 8–15 players born in 2016–2017 through the full in-season weekly cycle.",
+                "Plan and deliver complete sessions covering first touch, dribbling, passing, finishing, weaker-foot work, and age-appropriate game understanding.",
             ],
         ),
         role(
@@ -300,14 +355,14 @@ def main():
     doc = SimpleDocTemplate(
         str(PUBLIC_OUTPUT),
         pagesize=A4,
-        rightMargin=18 * mm,
-        leftMargin=18 * mm,
-        topMargin=15 * mm,
-        bottomMargin=18 * mm,
+        rightMargin=MARGIN,
+        leftMargin=MARGIN,
+        topMargin=A4[1] - RULE_TOP + 16,
+        bottomMargin=RULE_BOTTOM + 16,
         title="Igor Pukalski CV",
         author="Igor Pukalski",
     )
-    doc.build(build_story(), onFirstPage=page_number, onLaterPages=page_number)
+    doc.build(build_story(), onFirstPage=page_furniture, onLaterPages=page_furniture)
     CANONICAL_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     copy2(PUBLIC_OUTPUT, CANONICAL_OUTPUT)
     print(f"Generated {PUBLIC_OUTPUT}")

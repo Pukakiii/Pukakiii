@@ -41,21 +41,25 @@ export function Experiences() {
           </PanelTitle>
         </PanelHeader>
 
-        {EXPERIENCES.map((experience, index) => (
-          <ExperienceCompanyShell
-            key={experience.id}
-            categories={Array.from(
-              new Set(
-                experience.positions.flatMap((position) =>
-                  position.category ? [position.category] : []
+        {/* Own flex column so the shells' order-* classes actually apply; the
+            panel header must stay outside it or filtering would reorder it too. */}
+        <div className="flex flex-col">
+          {EXPERIENCES.map((experience, index) => (
+            <ExperienceCompanyShell
+              key={experience.id}
+              categories={Array.from(
+                new Set(
+                  experience.positions.flatMap((position) =>
+                    position.category ? [position.category] : []
+                  )
                 )
-              )
-            )}
-            overflow={index >= MAX}
-          >
-            <ExperienceItem experience={experience} />
-          </ExperienceCompanyShell>
-        ))}
+              )}
+              overflow={index >= MAX}
+            >
+              <ExperienceItem experience={experience} />
+            </ExperienceCompanyShell>
+          ))}
+        </div>
       </Panel>
     </ExperienceFilter>
   )

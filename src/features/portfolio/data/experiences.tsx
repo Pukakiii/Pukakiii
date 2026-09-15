@@ -89,6 +89,41 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
+    id: "lider-wilanow",
+    companyName: "Lider Wilanów",
+    companyIcon: <VolleyballIcon />,
+    companyWebsite: "https://liderwilanow.pl",
+    location: "Wilanów, Warsaw, Poland",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "lider-wilanow-youth-coach",
+        title: "Youth Football Coach",
+        category: "coaching",
+        employmentPeriod: { start: "09.2026" },
+        employmentType: "Part-time",
+        icon: <UsersIcon />,
+        isExpanded: true,
+        description: `Coach **groups of 8–15 players born in 2016–2017** (approximately ages 8–10) at a Warsaw youth football academy, running regular in-season training across the full weekly cycle.
+
+- Plan and deliver complete age-appropriate sessions, structuring each into warm-up, technical work, small-sided games, and a competitive finish.
+- Coach the core technical syllabus: first touch, close control, dribbling and changes of direction, passing, receiving on the half-turn, finishing, and weaker-foot development.
+- Build age-appropriate game understanding — spatial awareness, positioning, one-v-one decision-making, pressing and support play, and cooperation in small-sided formats.
+- Develop athletic foundations alongside technique: coordination, agility, balance, acceleration, and change of direction.
+- Manage group organisation and rotations so every player in a group of up to 15 keeps a high number of ball contacts and stays actively involved.
+- Maintain discipline, safety, and a positive learning environment, and give immediate individual technical feedback every session.`,
+        skills: [
+          "Youth coaching",
+          "Session planning",
+          "Technical development",
+          "Group management",
+          "Player safety",
+          "Long-term player development",
+        ],
+      },
+    ],
+  },
+  {
     id: "private-football-coach",
     companyName: "Private Clients",
     companyIcon: <VolleyballIcon />,
@@ -147,6 +182,92 @@ export const EXPERIENCES: Experience[] = [
           "Player safety",
           "Technical development",
         ],
+      },
+    ],
+  },
+  {
+    id: "skala-stryi",
+    companyName: "Skala Stryi",
+    companyIcon: <ShieldCheckIcon />,
+    location: "Stryi, Ukraine",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "skala-stryi-camp-assistant",
+        title: "Youth Football Camp Coaching Assistant",
+        category: "coaching",
+        employmentPeriod: { start: "2020" },
+        employmentType: "Informal coaching support",
+        icon: <UsersIcon />,
+        description: `At age 15, supported the club's lead coaches during a two-week summer camp while attending as the oldest academy player, helping train players **2–4 years younger** (around ages 11–13).
+
+- Assisted with warm-ups, technical drills, and small-sided games under the supervision of the lead coaching staff.
+- Demonstrated exercises and core techniques, and helped younger participants understand instructions.
+- Helped prepare the pitch and equipment, organise players between exercises, and keep sessions moving.
+- Monitored behaviour, engagement, and safety throughout training and camp activities.`,
+        skills: [
+          "Coaching support",
+          "Group organisation",
+          "Technical demonstration",
+          "Player safety",
+        ],
+      },
+      {
+        id: "skala-stryi-academy-player",
+        title: "Academy Player",
+        category: "coaching",
+        employmentPeriod: { start: "2017", end: "2021" },
+        employmentType: "Academy player",
+        icon: <VolleyballIcon />,
+        description: `Developed in a structured football academy through regular technical, tactical, physical, and match-based training.
+
+- Built the foundations of positional awareness, teamwork, discipline, and competitive match preparation.
+- Developed technical fundamentals and an understanding of defensive organisation as a centre-back and full-back.`,
+        skills: ["Technical fundamentals", "Tactical awareness", "Team play"],
+      },
+    ],
+  },
+  {
+    id: "nadnarwianka-pultusk",
+    companyName: "MKS Nadnarwianka Pułtusk",
+    companyIcon: <VolleyballIcon />,
+    location: "Pułtusk, Poland",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "nadnarwianka-player",
+        title: "Football Player",
+        category: "coaching",
+        employmentPeriod: { start: "2021", end: "2023" },
+        employmentType: "Competitive player",
+        icon: <VolleyballIcon />,
+        description: `Trained and competed with the club at **Polish fifth-league level**.
+
+- Developed tactical awareness, match fitness, positional versatility, teamwork, and decision-making in a competitive senior environment.
+- Gained experience adapting to the physical and tactical demands of Polish league football.`,
+        skills: ["Senior football", "Tactical awareness", "Match preparation"],
+      },
+    ],
+  },
+  {
+    id: "gks-pokrzywnica",
+    companyName: "GKS Pokrzywnica",
+    companyIcon: <VolleyballIcon />,
+    location: "Pokrzywnica, Poland",
+    locationType: "On-site",
+    positions: [
+      {
+        id: "gks-pokrzywnica-player",
+        title: "Football Player",
+        category: "coaching",
+        employmentPeriod: { start: "2023", end: "2024" },
+        employmentType: "Competitive player",
+        icon: <VolleyballIcon />,
+        description: `Trained and competed with the club in the Polish **A Klasa**.
+
+- Continued developing technical execution, movement, finishing, and match awareness in regular training and competition.
+- Strengthened the practical understanding of the game that now supports individual and youth coaching work.`,
+        skills: ["Senior football", "Finishing", "Match awareness"],
       },
     ],
   },
