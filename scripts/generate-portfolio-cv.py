@@ -193,9 +193,9 @@ def build_story():
     story.append(
         Paragraph(
             "Fullstack developer and University of Warsaw student in Artificial Intelligence "
-            "and Cognitive Science. Leads a four-developer team building JobAgent across "
-            "architecture, frontend, backend, UI/UX, QA, and documentation. Former production "
-            "frontend engineer at Flowtly, with an earlier background in creative production. "
+            "and Cognitive Science. Most recently led a four-developer team building JobAgent "
+            "across architecture, frontend, backend, UI/UX, QA, and documentation, after a "
+            "production frontend role at Flowtly and an earlier background in creative production. "
             "Also coaches youth football in Warsaw, currently running the 2016–2017 age "
             "groups, alongside 20+ individual players.",
             S["body"],
@@ -207,11 +207,11 @@ def build_story():
         role(
             "Team Lead / Fullstack Developer",
             "JobAgent · Freelance",
-            "Apr 2026 – Present",
+            "Apr 2026 – Jul 2026",
             "Remote",
             [
-                "Lead a four-developer team and own technical direction, architecture, and cross-functional delivery.",
-                "Ship frontend, backend integration, authentication, state management, responsive UI, accessibility, testing, and documentation.",
+                "Led a four-developer team and owned technical direction, architecture, and cross-functional delivery.",
+                "Shipped frontend, backend integration, authentication, state management, responsive UI, accessibility, testing, and documentation.",
             ],
         ),
         role(
