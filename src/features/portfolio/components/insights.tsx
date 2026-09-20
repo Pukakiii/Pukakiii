@@ -31,8 +31,8 @@ export async function Insights() {
 
  <div className="grid aspect-2/1 w-full place-content-center sm:aspect-3/1">
  <p className="px-4 text-center text-sm text-balance text-muted-foreground">
- Analytics unavailable — configure the OpenPanel environment
- variables to enable this section.
+ Analytics unavailable — configure the Umami environment variables
+ to enable this section.
  </p>
  </div>
  </Panel>
@@ -103,19 +103,19 @@ export async function Insights() {
  >
  <Grid horizontal />
  <Line
- dataKey="total_sessions"
+ dataKey="total_screen_views"
  stroke="var(--chart-2)"
  strokeWidth={2}
  />
  <Line
- dataKey="unique_visitors"
+ dataKey="total_sessions"
  stroke="var(--chart-1)"
  strokeWidth={2}
  />
  <ChartTooltip
  rowLabels={{
+ total_screen_views: "Views",
  total_sessions: "Sessions",
- unique_visitors: "Unique Visitors",
  }}
  />
  </LineChart>

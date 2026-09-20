@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { op } from "./openpanel"
+import { umamiTrack } from "./umami"
 
 const eventSchema = z.object({
  name: z.enum([
@@ -38,6 +38,6 @@ export type Event = z.infer<typeof eventSchema>
 export function trackEvent(input: Event) {
  const event = eventSchema.parse(input)
  if (event) {
- op?.track(event.name, event.properties)
+ umamiTrack(event.name, event.properties)
  }
 }

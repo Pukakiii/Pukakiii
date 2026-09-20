@@ -10,7 +10,7 @@ Personal portfolio of Igor Pukalski (Pukakiii) — fullstack developer based in 
 - TypeScript 5.8
 - shadcn/ui + Radix + Base UI primitives
 - MDX blog with RSS feed
-- OpenPanel analytics
+- Self-hosted Umami analytics (see `docs/umami-self-hosting.md`)
 
 ## Pages
 
@@ -40,7 +40,8 @@ Copy `.env.example` to `.env.local` and fill in what you need — everything deg
 | `NEXT_PUBLIC_APP_URL` | Canonical site URL |
 | `GITHUB_API_TOKEN` | GitHub stars in the header |
 | `GITHUB_CONTRIBUTIONS_API_URL` | Contribution graph on `/analytics` |
-| `NEXT_PUBLIC_OPENPANEL_CLIENT_ID` + `OPENPANEL_*` | Analytics + insights chart |
+| `NEXT_PUBLIC_UMAMI_URL` + `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Umami tracking |
+| `UMAMI_API_KEY` (or `UMAMI_USERNAME` + `UMAMI_PASSWORD`) | Insights chart |
 
 ## Scripts
 

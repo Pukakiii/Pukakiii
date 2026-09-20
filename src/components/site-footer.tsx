@@ -56,7 +56,16 @@ export function SiteFooter() {
 
  <Item>
  <dt>Analytics</dt>
- <dd>OpenPanel</dd>
+ <dd>
+ <a
+ className="link-underline"
+ href="https://umami.is"
+ target="_blank"
+ rel="noopener"
+ >
+ Umami
+ </a>
+ </dd>
  </Item>
 
  <Item>
