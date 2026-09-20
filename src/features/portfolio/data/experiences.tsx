@@ -54,41 +54,6 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: "jobagent",
-    companyName: "JobAgent",
-    companyLogo: "/images/logos/projects/job-agent.svg",
-    companyWebsite: "https://github.com/Pukakiii",
-    locationType: "Remote",
-    positions: [
-      {
-        id: "jobagent-lead",
-        title: "Team Lead / Fullstack Developer",
-        category: "developer",
-        employmentPeriod: { start: "04.2026", end: "07.2026" },
-        employmentType: "Freelance",
-        icon: <UsersIcon />,
-        isExpanded: true,
-        description: `Led a **4-developer team** delivering JobAgent, owning technical direction and shipping across the full stack.
-
-- **Team Lead** — set technical direction and architecture, led the team and managed people, drove cross-functional communication.
-- **Frontend** — UI development, React components, responsive design, and accessibility.
-- **Backend** — API integration, authentication, state management, and backend logic.
-- **UI/UX Designer** — layout structure, design-system consistency, and UX improvements.
-- **QA & Documentation** — testing, bug reporting, documentation, and code-review support.`,
-        skills: [
-          "Team leadership",
-          "Architecture",
-          "React",
-          "Python",
-          "FastAPI",
-          "UI/UX",
-          "QA",
-          "Documentation",
-        ],
-      },
-    ],
-  },
-  {
     id: "lider-wilanow",
     companyName: "Lider Wilanów",
     companyIcon: <VolleyballIcon />,

@@ -31,10 +31,12 @@ export function HelloTitle() {
 // Self-contained (globals only) so it can be serialized via `.toString()` into
 // the pre-hydration script as well as used as the client snapshot.
 function getGreeting() {
+ // Viewer's local time: 06–12 morning, 12–18 afternoon, 18–24 evening, 00–06 night.
  const hour = new Date().getHours()
- if (hour >= 0 && hour < 12) return "Good morning"
- if (hour >= 12 && hour < 17) return "Good afternoon"
- return "Good evening"
+ if (hour >= 6 && hour < 12) return "Good morning"
+ if (hour >= 12 && hour < 18) return "Good afternoon"
+ if (hour >= 18) return "Good evening"
+ return "Good night"
 }
 
 function runGreetingScript(elementId: string, compute: typeof getGreeting) {

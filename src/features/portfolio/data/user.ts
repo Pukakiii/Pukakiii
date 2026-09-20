@@ -18,13 +18,15 @@ export const USER: User = {
  emailB64: "cGtraS5pcC53b3JrQGdtYWlsLmNvbQ==",
  website: "https://github.com/Pukakiii",
  jobTitle: "Fullstack Developer",
- about: `I'm Igor Pukalski (Pukakiii) — a fullstack developer based in Warsaw, Poland, currently studying Artificial Intelligence and Cognitive Science (AI and Cognitivistics) at the University of Warsaw.
+ about: `Hi, I'm Igor — a fullstack developer from Warsaw, studying AI & Cognitive Science at the University of Warsaw.
 
-I work across the stack and lead a 4-developer team shipping JobAgent end to end — architecture, frontend, backend, UI/UX, QA, and documentation. Previously, I built production React 18 + TypeScript frontends with large typed Redux state layers at Flowtly.
+**Developer.** This is the main thing. A year at Flowtly building a production React 18 + TypeScript scheduling platform with a large typed Redux layer (RTK Query, Redux Saga, MUI, Jest, Cypress, Playwright). Then leading a 4-developer team on JobAgent end to end — architecture, React frontend, Python/FastAPI backend, UI/UX, QA and docs. Day to day: TypeScript, React, Next.js and Python, with Claude, Cursor and local models via Ollama baked into how I work.
 
-Before software, I spent years in creative production — branding, video, commercial photography, and web design for corporate clients, foundations, and public institutions. That background shapes how I build: design-minded, client-aware, and pragmatic.
+**Designer.** Before code I spent years in branding, video, photography and web design for companies, foundations and public institutions. It still shapes how I build.
 
-I use AI tooling heavily and deliberately — Claude and Cursor at high proficiency, personal agents, and local models via Ollama — grounded in ML and LLM fundamentals. I also coach football privately, have worked with 20+ players, and bring experience from academy and competitive football into every session.`,
+**Coach.** I coach football — youth academy groups and private sessions, 20+ players so far, with a competitive background behind it.
+
+**The rest.** Sport, picking up new things, and trying to live an interesting life.`,
  avatar: "/images/brand/pkki-logo.png",
  avatarVariants: {
  lightOff: "/images/brand/pkki-logo.png",

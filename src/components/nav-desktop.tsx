@@ -62,6 +62,7 @@ export function NavDesktop({
   // Adjusting state during render (React's recommended pattern) re-settles the
   // row whenever navigation moves between the primary and secondary sections.
   const [open, setOpen] = useState(isAnyMoreActive)
+  const [hintIncoming, setHintIncoming] = useState(false)
   const [prevMoreActive, setPrevMoreActive] = useState(isAnyMoreActive)
   if (prevMoreActive !== isAnyMoreActive) {
     setPrevMoreActive(isAnyMoreActive)
@@ -83,6 +84,7 @@ export function NavDesktop({
       <nav aria-label="Main">
         <NavSwapTrack
           open={open}
+          hintIncoming={hintIncoming}
           primary={<NavLinks items={items} pathname={pathname ?? ""} />}
           secondary={
             <NavLinks items={moreItems!} pathname={pathname ?? ""} />
@@ -104,6 +106,10 @@ export function NavDesktop({
           haptic()
           setOpen((prev) => !prev)
         }}
+        onPointerEnter={() => setHintIncoming(true)}
+        onPointerLeave={() => setHintIncoming(false)}
+        onFocus={() => setHintIncoming(true)}
+        onBlur={() => setHintIncoming(false)}
       >
         More
         <ChevronDownIcon

@@ -11,7 +11,9 @@ import {
  CircleCheckBigIcon,
  CornerDownLeftIcon,
  DownloadIcon,
+ FileTextIcon,
  GraduationCapIcon,
+ HouseIcon,
  LayersIcon,
  LineChartIcon,
  MailIcon,
@@ -65,7 +67,7 @@ const MENU_LINKS: CommandLinkItem[] = [
  title: "Home",
  href: "/",
  kind: "page",
- icon: <BrandMark />,
+ icon: <HouseIcon />,
  shortcut: "GH",
  },
  {
@@ -137,6 +139,14 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
 }))
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
+ {
+ title: "Download CV",
+ href: "/Igor_Pukalski_CV.pdf",
+ kind: "command",
+ icon: <FileTextIcon />,
+ keywords: ["resume", "cv", "pdf"],
+ openInNewTab: true,
+ },
  {
  title: "Download vCard",
  href: "/vcard",
@@ -320,8 +330,8 @@ export function CommandMenu({
  handleCopyText(getMarkSVG(), "Mark as SVG copied")
  }}
  >
- <BrandMark />
- Copy Mark as SVG
+ <BrandMark className="size-4 shrink-0" />
+ <p className="line-clamp-1">Copy Mark as SVG</p>
  </CommandMenuItem>
 
  <CommandMenuItem
@@ -331,7 +341,7 @@ export function CommandMenu({
  }}
  >
  <TypeIcon />
- Copy Logotype as SVG
+ <p className="line-clamp-1">Copy Logotype as SVG</p>
  </CommandMenuItem>
 
  </CommandGroup>
