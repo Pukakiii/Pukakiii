@@ -6,26 +6,28 @@ id and an API key.
 
 ## 1. Database (Neon, free)
 
-1. Sign in at https://neon.tech and create a project (any region close to
-   Vercel's, e.g. Frankfurt).
-2. On the project dashboard open **Connect**, switch **Pooled connection off**,
-   and copy the connection string. It looks like
-   `postgresql://user:pass@ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require`.
-   Umami runs Prisma migrations at build time, which need the direct
-   (non-pooled) URL.
+1. Sign up at https://console.neon.tech/signup and create a project. Pick a
+   region close to Vercel's default, e.g. **AWS Europe Central (Frankfurt)**.
+2. On the project dashboard click **Connect**. Copy two strings:
+   - with **Connection pooling ON** (host contains `-pooler`) → `DATABASE_URL`
+   - with **Connection pooling OFF** → `DIRECT_DATABASE_URL`
+
+   Umami serves requests over the pooled URL and runs its migrations over the
+   direct one during the build.
 
 ## 2. Deploy Umami on Vercel
 
-1. Fork https://github.com/umami-software/umami to your GitHub account.
-2. In Vercel: **Add New → Project**, import the fork. Framework is detected as
+1. Fork https://github.com/umami-software/umami/fork to your GitHub account.
+2. Go to https://vercel.com/new and import the fork. Framework is detected as
    Next.js; keep the defaults (the repo ships a `vercel.json` with the pnpm
    install command).
 3. Before the first deploy, add environment variables:
 
    | Name | Value |
    |------|-------|
-   | `DATABASE_URL` | the Neon direct connection string |
-   | `APP_SECRET` | any random string, e.g. `openssl rand -base64 32` |
+   | `DATABASE_URL` | Neon pooled connection string |
+   | `DIRECT_DATABASE_URL` | Neon direct connection string |
+   | `APP_SECRET` | random string, e.g. output of `openssl rand -hex 32` |
 
 4. Deploy. The build runs the database migrations; first build takes a few
    minutes. You get `https://<name>.vercel.app`.
