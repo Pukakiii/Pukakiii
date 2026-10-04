@@ -2,12 +2,13 @@ import Script from "next/script"
 
 import { isUmamiEnabled, UMAMI_URL, UMAMI_WEBSITE_ID } from "@/lib/umami"
 
-/**
- * Umami tracker. Renders nothing unless NEXT_PUBLIC_UMAMI_URL and
- * NEXT_PUBLIC_UMAMI_WEBSITE_ID are set, so local/dev stays silent.
- */
+// Only production builds report, so dev and Vercel previews don't skew stats.
+const shouldTrack =
+ process.env.NODE_ENV === "production" && process.env.VERCEL_ENV !== "preview"
+
+/** Umami tracker. Renders nothing outside production deployments. */
 export function UmamiAnalytics() {
- if (!isUmamiEnabled) return null
+ if (!isUmamiEnabled || !shouldTrack) return null
 
  return (
  <Script
