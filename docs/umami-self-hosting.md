@@ -61,7 +61,7 @@ If your Umami build predates API keys, use `UMAMI_USERNAME` + `UMAMI_PASSWORD`
 instead of `UMAMI_API_KEY`.
 
 Page views and custom events start flowing on the next load. The Insights
-panel is cached for an hour and charts the last 30 days; the full history is
+panel is cached for 5 minutes and charts the last 30 days; the full history is
 in the Umami dashboard.
 
 ## Keeping it updated
