@@ -187,5 +187,5 @@ export const getInsights = unstable_cache(
  }
  },
  ["umami-insights"],
- { revalidate: 3600 } // Cache for 1 hour
+ { revalidate: 300 } // Cache for 5 minutes
 )
