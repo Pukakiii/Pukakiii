@@ -1,9 +1,9 @@
-// Self-hosted Umami (https://umami.is). Everything no-ops when unset.
-export const UMAMI_URL = (process.env.NEXT_PUBLIC_UMAMI_URL ?? "").replace(
- /\/+$/,
- ""
-)
-// Public anyway (it ships in the page HTML), so it lives here as the default.
+// Self-hosted Umami (https://umami.is).
+// Both are public anyway (they ship in the page HTML), so they live here as
+// defaults; env vars still override them.
+export const UMAMI_URL = (
+ process.env.NEXT_PUBLIC_UMAMI_URL || "https://umami-gold-iota.vercel.app"
+).replace(/\/+$/, "")
 export const UMAMI_WEBSITE_ID =
  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ||
  "e6a682a4-2907-405e-b2b9-6308bc737196"

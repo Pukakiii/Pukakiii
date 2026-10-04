@@ -45,12 +45,15 @@ id and an API key.
 
 ## 4. Configure the portfolio
 
-Add these to `.env.local` and to the portfolio's Vercel project
+The Umami URL (`https://umami-gold-iota.vercel.app`) and website id are
+baked into `src/lib/umami.ts` as defaults; `NEXT_PUBLIC_UMAMI_URL` and
+`NEXT_PUBLIC_UMAMI_WEBSITE_ID` override them if you ever move Umami.
+
+The only thing left is the API key for the Insights panel. Add it to
+`.env.local` and to the portfolio's Vercel project
 (**Settings → Environment Variables**), then redeploy:
 
 ```bash
-NEXT_PUBLIC_UMAMI_URL=https://<your-umami>.vercel.app
-NEXT_PUBLIC_UMAMI_WEBSITE_ID=<website id>
 UMAMI_API_KEY=<api key>
 ```
 
@@ -70,7 +73,8 @@ Umami. Vercel redeploys automatically and migrations run during the build.
 
 - Neon's free compute pauses after inactivity; the first request after a
   pause takes about a second. Harmless for analytics.
-- Everything degrades gracefully: with the variables unset, tracking is a
-  no-op and the Insights panel shows a placeholder.
+- The tracker only loads in production deployments, so `pnpm dev` and Vercel
+  previews don't count. Without an API key the Insights panel shows a
+  placeholder.
 - Ad blockers may block `script.js` from a third-party host. If that matters
   later, proxy it through the portfolio with a rewrite in `next.config.ts`.
