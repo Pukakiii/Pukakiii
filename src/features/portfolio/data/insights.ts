@@ -2,6 +2,7 @@ import "server-only"
 
 import { unstable_cache } from "next/cache"
 
+import { UMAMI_URL, UMAMI_WEBSITE_ID } from "@/lib/umami"
 import { USER } from "@/features/portfolio/data/user"
 
 type ISODateString = string
@@ -55,8 +56,8 @@ type UmamiPageviews = {
 }
 
 function getConfig(): UmamiConfig | null {
- const baseUrl = (process.env.NEXT_PUBLIC_UMAMI_URL ?? "").replace(/\/+$/, "")
- const websiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+ const baseUrl = UMAMI_URL
+ const websiteId = UMAMI_WEBSITE_ID
  const apiKey = process.env.UMAMI_API_KEY
  const username = process.env.UMAMI_USERNAME
  const password = process.env.UMAMI_PASSWORD

@@ -3,7 +3,10 @@ export const UMAMI_URL = (process.env.NEXT_PUBLIC_UMAMI_URL ?? "").replace(
  /\/+$/,
  ""
 )
-export const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? ""
+// Public anyway (it ships in the page HTML), so it lives here as the default.
+export const UMAMI_WEBSITE_ID =
+ process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ||
+ "e6a682a4-2907-405e-b2b9-6308bc737196"
 
 export const isUmamiEnabled = Boolean(UMAMI_URL && UMAMI_WEBSITE_ID)
 
